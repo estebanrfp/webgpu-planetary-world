@@ -1,0 +1,49 @@
+/* ========== Activity Feed ========== */
+    .mp-activity-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mp-activity-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--mp-border-light);
+      transition: background 0.15s;
+    }
+
+    .mp-activity-item:hover {
+      background: var(--mp-bg-hover);
+    }
+
+    .mp-activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .mp-activity-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mp-activity-title strong { color: var(--mp-accent); }
+
+    .mp-activity-meta {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-activity-price {
+      text-align: right;
+    }
+
+    .mp-activity-amount {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-success);
+    }
+
+    .mp-activity-usd {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }

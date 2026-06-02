@@ -1,0 +1,92 @@
+/* ========== Royalty Modal ========== */
+    .mp-royalty-current {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .mp-royalty-current-box {
+      flex: 1;
+      background: rgba(var(--mp-accent-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-accent-rgb), 0.2);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .mp-royalty-current-label {
+      display: block;
+      font-size: 11px;
+      color: var(--mp-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .mp-royalty-current-value {
+      display: block;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--mp-accent);
+    }
+    .mp-royalty-input-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .mp-royalty-presets {
+      display: flex;
+      gap: 6px;
+    }
+    .mp-royalty-preset {
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--mp-text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .mp-royalty-preset:hover {
+      background: rgba(var(--mp-accent-rgb), 0.1);
+      border-color: rgba(var(--mp-accent-rgb), 0.3);
+      color: var(--mp-accent);
+    }
+    .mp-royalty-preset.active {
+      background: rgba(var(--mp-accent-rgb), 0.15);
+      border-color: var(--mp-accent);
+      color: var(--mp-accent);
+    }
+    .mp-royalty-info {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 16px;
+    }
+    .mp-royalty-info-icon {
+      font-size: 16px;
+      color: var(--mp-accent);
+      flex-shrink: 0;
+    }
+    .mp-royalty-info-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--mp-text-primary);
+      margin-bottom: 6px;
+    }
+    .mp-royalty-info-text {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+      line-height: 1.5;
+    }
+    .mp-btn-purple {
+      background: linear-gradient(135deg, var(--mp-accent) 0%, #8b5cf6 100%);
+      border: none;
+      color: white;
+    }
+    .mp-btn-purple:hover {
+      filter: brightness(1.1);
+    }

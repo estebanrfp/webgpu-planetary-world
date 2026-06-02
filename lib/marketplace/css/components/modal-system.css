@@ -1,0 +1,95 @@
+/* ========== Modal System ========== */
+    .mp-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mp-modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mp-modal {
+      display: flex;
+      flex-direction: column;
+      background: var(--mp-bg-modal);
+      border: 1px solid var(--mp-border);
+      border-radius: 16px;
+      width: calc(100% - 32px);
+      max-width: 640px;
+      max-height: 85vh;
+      margin: 16px;
+      overflow: hidden;
+      transform: scale(0.95) translateY(20px);
+      transition: transform 0.3s ease;
+    }
+
+    .mp-modal-overlay.open .mp-modal {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Size variants - use sparingly */
+    .mp-modal-sm { max-width: 400px; }
+    .mp-modal-lg { max-width: 640px; }
+    .mp-modal-xl { max-width: 800px; }
+    .mp-modal-settings { max-width: 640px; }
+
+    .mp-settings-modal-body {
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
+    .mp-settings-tabs {
+      display: flex;
+      gap: 4px;
+      padding: 0 0 16px 0;
+      border-bottom: 1px solid var(--mp-border-light);
+      margin-bottom: 16px;
+      overflow-x: auto;
+    }
+
+    .mp-settings-tab {
+      padding: 8px 16px;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      color: var(--mp-text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+
+    .mp-settings-tab:hover {
+      color: var(--mp-text);
+      background: var(--mp-bg-hover);
+    }
+
+    .mp-settings-tab.active {
+      color: var(--mp-accent);
+      background: rgba(var(--mp-accent-rgb), 0.1);
+    }
+
+    .mp-settings-tab-content {
+      display: none;
+    }
+
+    .mp-settings-tab-content.active {
+      display: block;
+    }
+
+    .mp-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }

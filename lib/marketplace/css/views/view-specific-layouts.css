@@ -1,0 +1,742 @@
+/* ========== View-Specific Layouts ========== */
+    .mp-view-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .mp-view-grid.collections-view {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    /* Inventory supply badge (used in unified cards) */
+    .mp-inventory-supply-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      padding: 3px 7px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(var(--mp-accent-rgb), 0.9);
+      color: var(--mp-text-white);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Inventory Group Styles */
+    .mp-inventory-group {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+    .mp-inventory-group:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    .mp-inventory-group::after {
+      content: '▶';
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      color: var(--mp-text-muted);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .mp-inventory-group:hover::after {
+      opacity: 1;
+    }
+    .mp-group-summary {
+      font-size: 11px;
+      color: var(--mp-text-muted);
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mp-back-btn {
+      background: var(--mp-accent) !important;
+      color: var(--mp-text-white) !important;
+    }
+    .mp-back-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Inventory Group Row (Table Mode) */
+    .mp-inventory-group-row {
+      cursor: pointer;
+      background: var(--mp-bg-card);
+      border-left: 3px solid var(--mp-accent);
+    }
+    .mp-inventory-group-row:hover {
+      background: var(--mp-bg-hover);
+    }
+    .mp-group-badge {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--mp-accent);
+      color: var(--mp-text-white);
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .mp-table-avatar {
+      position: relative;
+    }
+    .mp-group-status-summary {
+      font-size: 11px;
+      color: var(--mp-text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mp-table-action-btn.expand {
+      background: rgba(var(--mp-accent-rgb), var(--mp-btn-bg-opacity));
+      color: var(--mp-text-white);
+    }
+    .mp-table-action-btn.expand:hover {
+      background: rgba(var(--mp-accent-rgb), var(--mp-btn-bg-opacity-hover));
+    }
+    .mp-btn-expand {
+      background: rgba(var(--mp-accent-rgb), var(--mp-btn-bg-opacity));
+      color: var(--mp-text-white);
+      border: none;
+      padding: 6px 12px;
+      border-radius: var(--mp-radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .mp-btn-expand:hover {
+      background: rgba(var(--mp-accent-rgb), var(--mp-btn-bg-opacity-hover));
+    }
+
+    /* Expanded Asset Items (virtual units) */
+    .mp-expanded-item {
+      border-left: 3px solid var(--mp-accent);
+    }
+    .mp-expanded-index {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--mp-text-white);
+      backdrop-filter: blur(4px);
+    }
+    .mp-expanded-index-badge {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--mp-accent);
+      color: var(--mp-text-white);
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Batch Mode Styles */
+    .mp-batch-mode-toggle {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+    }
+
+    .mp-batch-list-btn {
+      margin-top: 12px;
+    }
+
+    .mp-batch-checkbox {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 24px;
+      height: 24px;
+      background: var(--mp-bg-modal);
+      border: 2px solid var(--mp-border);
+      border-radius: 6px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: transparent;
+      z-index: 5;
+      transition: all 0.15s;
+    }
+
+    /* Checkboxes are hidden - visual selection effect is used instead */
+
+    /* Batch Sell Mode for Inventory Cards (.mp-card-inventory) */
+    .mp-card-inventory.batch-mode {
+      cursor: pointer;
+      opacity: 0.5;
+      filter: brightness(0.7);
+      transition: all 0.2s ease;
+    }
+    .mp-card-inventory.batch-mode:hover {
+      opacity: 0.75;
+      filter: brightness(0.85);
+    }
+    .mp-card-inventory.batch-mode .mp-card-footer {
+      display: none;
+    }
+    .mp-card.mp-card-inventory.batch-mode .mp-batch-checkbox {
+      display: none !important;
+    }
+    .mp-card-inventory.batch-selected {
+      opacity: 1;
+      filter: brightness(1);
+      border-color: var(--mp-accent);
+      box-shadow: 0 0 0 2px rgba(var(--mp-accent-rgb), 0.3);
+    }
+    .mp-card-inventory.batch-selected:hover {
+      opacity: 1;
+      filter: brightness(1);
+    }
+
+    /* Batch Buy Mode for Explore Cards - dim/highlight effect like Inventory */
+    .mp-card.batch-mode {
+      cursor: pointer;
+      position: relative;
+      opacity: 0.5;
+      filter: brightness(0.7);
+      transition: all 0.2s ease;
+    }
+    .mp-card.batch-mode:hover {
+      opacity: 0.75;
+      filter: brightness(0.85);
+    }
+    .mp-card.batch-mode .mp-card-actions {
+      display: none;
+    }
+    .mp-card.batch-mode .mp-card-footer {
+      display: none;
+    }
+    /* Hide checkbox in batch mode - visual selection only */
+    .mp-card.batch-mode .mp-batch-checkbox,
+    .mp-card .mp-batch-checkbox {
+      display: none !important;
+    }
+    .mp-card.batch-selected {
+      opacity: 1;
+      filter: brightness(1);
+      border-color: var(--mp-accent);
+      box-shadow: 0 0 0 2px rgba(var(--mp-accent-rgb), 0.3);
+    }
+    .mp-card.batch-selected:hover {
+      opacity: 1;
+      filter: brightness(1);
+    }
+
+    .mp-batch-buy-btn {
+      margin-top: 12px;
+    }
+
+    .mp-batch-item-price-display {
+      font-weight: 600;
+      color: var(--mp-success);
+      white-space: nowrap;
+    }
+
+    /* Batch Modal Styles */
+    .mp-batch-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: rgba(var(--mp-accent-rgb), 0.1);
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    .mp-batch-info-count {
+      font-weight: 600;
+      color: var(--mp-accent);
+    }
+
+    .mp-batch-info-hint {
+      font-size: 13px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-batch-items {
+      max-height: 300px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .mp-batch-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 10px;
+    }
+
+    .mp-batch-item-image {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .mp-batch-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mp-batch-item-info {
+      flex: 1;
+    }
+
+    .mp-batch-item-name {
+      font-weight: 500;
+      color: var(--mp-text-white);
+      font-size: 14px;
+    }
+
+    .mp-batch-item-collection {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-batch-item-price {
+      width: 120px;
+    }
+
+    .mp-batch-item-price input {
+      width: 100%;
+      padding: 8px 12px;
+      background: var(--mp-bg-secondary);
+      border: 1px solid var(--mp-border);
+      border-radius: 8px;
+      color: var(--mp-text);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .mp-batch-item-price input:focus {
+      outline: none;
+      border-color: var(--mp-accent);
+    }
+
+    .mp-batch-item-remove {
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: none;
+      color: var(--mp-text-muted);
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 18px;
+    }
+
+    .mp-batch-item-remove:hover {
+      background: rgba(var(--mp-danger-rgb), 0.1);
+      color: var(--mp-danger);
+    }
+
+    .mp-batch-token-selector {
+      margin-bottom: 16px;
+    }
+
+    .mp-token-options {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .mp-token-btn {
+      padding: 8px 20px;
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 8px;
+      color: var(--mp-text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mp-token-btn:hover {
+      border-color: var(--mp-text-muted);
+      color: var(--mp-text);
+    }
+
+    .mp-token-btn.active {
+      background: rgba(var(--mp-accent-rgb), 0.15);
+      border-color: var(--mp-accent);
+      color: var(--mp-accent);
+    }
+
+    .mp-batch-summary {
+      padding: 16px;
+      background: var(--mp-bg-secondary);
+      border-radius: 10px;
+    }
+
+    /* Activity/Offers List View */
+    .mp-list-view {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mp-list-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 12px;
+      transition: all 0.2s;
+    }
+
+    .mp-list-item:hover {
+      border-color: var(--mp-accent);
+    }
+
+    .mp-list-item-image {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .mp-list-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mp-list-item-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mp-list-item-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+      margin-bottom: 4px;
+    }
+
+    .mp-list-item-subtitle {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-list-item-meta {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .mp-list-item-price {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+    }
+
+    .mp-list-item-price.positive {
+      color: var(--mp-success);
+    }
+
+    .mp-list-item-price.negative {
+      color: var(--mp-danger);
+    }
+
+    .mp-list-item-time {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-list-item-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Activity Asset with Badge */
+    .mp-activity-asset {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .mp-activity-asset-img {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: var(--mp-bg-tertiary);
+    }
+    .mp-activity-badge {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      border: 2px solid var(--mp-bg-secondary);
+    }
+    .mp-activity-badge.sale { background: var(--mp-type-sale); color: #fff; }
+    .mp-activity-badge.purchase { background: var(--mp-accent); color: #fff; }
+    .mp-activity-badge.listing { background: var(--mp-warning); color: #fff; }
+    .mp-activity-badge.bid { background: var(--mp-purple); color: #fff; }
+    .mp-activity-badge.transfer { background: var(--mp-text-muted); color: #fff; }
+    .mp-activity-badge.mint { background: var(--mp-rent); color: #fff; }
+    .mp-activity-badge.burn { background: var(--mp-danger); color: #fff; }
+    .mp-activity-badge.rental { background: var(--mp-type-rent); color: #fff; }
+
+    /* Activity Info */
+    .mp-activity-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+      margin-bottom: 4px;
+    }
+    .mp-activity-event {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .mp-activity-label {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .mp-activity-label.sale { background: rgba(var(--mp-type-sale-rgb), 0.15); color: var(--mp-type-sale); }
+    .mp-activity-label.purchase { background: rgba(var(--mp-accent-rgb), 0.15); color: var(--mp-accent); }
+    .mp-activity-label.listing { background: rgba(var(--mp-warning-rgb), 0.15); color: var(--mp-warning); }
+    .mp-activity-label.bid { background: rgba(var(--mp-purple-rgb), 0.15); color: var(--mp-purple); }
+    .mp-activity-label.transfer { background: rgba(var(--mp-common-rgb), 0.15); color: var(--mp-common); }
+    .mp-activity-label.mint { background: rgba(var(--mp-rent-rgb), 0.15); color: var(--mp-rent); }
+    .mp-activity-label.burn { background: rgba(var(--mp-danger-rgb), 0.15); color: var(--mp-danger); }
+    .mp-activity-label.rental { background: rgba(var(--mp-type-rent-rgb), 0.15); color: var(--mp-type-rent); }
+    .mp-activity-addresses {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+      font-family: monospace;
+    }
+
+    /* Activity Right (Price + Time) */
+    .mp-activity-right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .mp-activity-amount {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+    }
+    .mp-activity-token {
+      font-weight: 500;
+      color: var(--mp-accent);
+    }
+    .mp-activity-time {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+      margin-top: 2px;
+    }
+
+    /* Legacy Activity Icon (fallback) */
+    .mp-activity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .mp-activity-icon.sale { background: rgba(var(--mp-success-rgb), 0.2); color: var(--mp-success); }
+    .mp-activity-icon.purchase { background: rgba(var(--mp-accent-rgb), 0.2); color: var(--mp-accent); }
+    .mp-activity-icon.listing { background: rgba(var(--mp-warning-rgb), 0.2); color: var(--mp-warning); }
+    .mp-activity-icon.bid { background: rgba(var(--mp-purple-rgb), 0.2); color: var(--mp-purple); }
+    .mp-activity-icon.transfer { background: rgba(var(--mp-text-muted-rgb), 0.2); color: var(--mp-text-muted); }
+
+    /* Empty State */
+    .mp-empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-empty-state-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+
+    .mp-empty-state-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--mp-text);
+      margin-bottom: 8px;
+    }
+
+    .mp-empty-state-text {
+      font-size: 14px;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    /* Stats View */
+    .mp-stats-view {
+      display: block;
+    }
+
+    .mp-stats-dashboard {
+      max-width: 1200px;
+    }
+
+    .mp-stats-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .mp-stats-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+    }
+
+    .mp-stats-period {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mp-stats-period-btn {
+      padding: 6px 14px;
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 8px;
+      color: var(--mp-text-muted);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mp-stats-period-btn:hover {
+      border-color: var(--mp-text-muted);
+    }
+
+    .mp-stats-period-btn.active {
+      background: var(--mp-accent);
+      border-color: var(--mp-accent);
+      color: #fff;
+    }
+
+    .mp-stats-section {
+      margin-top: 32px;
+    }
+
+    .mp-stats-section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+      margin-bottom: 16px;
+    }
+
+    .mp-top-collections {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mp-top-collection-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 16px;
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+
+    .mp-top-collection-item:hover {
+      border-color: var(--mp-accent);
+    }
+
+    .mp-top-collection-rank {
+      width: 28px;
+      height: 28px;
+      background: var(--mp-bg-hover);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mp-text);
+      flex-shrink: 0;
+    }
+
+    .mp-top-collection-info {
+      flex: 1;
+    }
+
+    .mp-top-collection-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+    }
+
+    .mp-top-collection-floor {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-top-collection-volume {
+      text-align: right;
+    }
+
+    .mp-top-collection-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+    }
+
+    .mp-top-collection-change {
+      font-size: 12px;
+    }
+
+    .mp-top-collection-change.positive { color: var(--mp-success); }
+    .mp-top-collection-change.negative { color: var(--mp-danger); }

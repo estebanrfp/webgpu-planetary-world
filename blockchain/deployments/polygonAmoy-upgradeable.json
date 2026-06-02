@@ -1,0 +1,144 @@
+{
+  "network": "polygonAmoy",
+  "chainId": "80002",
+  "deployer": "0xE5639DfE345F8ab845bEBE63a1C7322F9c6fF5c7",
+  "type": "upgradeable",
+  "contracts": {
+    "OVGForwarder": {
+      "address": "0x82a72519A568297DB47ce69516524b33d5840cD6",
+      "upgradeable": false
+    },
+    "OVGPaymaster": {
+      "proxy": "0x3060C0EA9039Cd637d3646f7c593DE0169646c7a",
+      "implementation": "0xeed820b4B2f67B10d7231f6F564220594e6B5587",
+      "upgradeable": true
+    },
+    "OVGToken": {
+      "proxy": "0x564f99BAD84cE3fD36D5597874633eddBB304b8f",
+      "implementation": "0xA4E2251fA0c4152Aa3fe51C5eEc21398f4bF52B3",
+      "upgradeable": true
+    },
+    "OVGAssets": {
+      "proxy": "0xD55d5049e597BA431d5C2b5c1f286532f0E0C195",
+      "implementation": "0xf80Baec0B472ae611ee54f94F37E27DE0867ad07",
+      "upgradeable": true,
+      "previousImplementations": [
+        {
+          "address": "0xFD9f6337DB89F7BDe6532bD8883738b5f29768a7",
+          "upgradedAt": "2026-02-03T18:27:45.015Z"
+        },
+        {
+          "address": "0x132d704C1647058b387eBf29415891C212664EB5",
+          "upgradedAt": "2026-02-03T20:53:43.960Z"
+        }
+      ]
+    },
+    "OVGMarketplace": {
+      "proxy": "0x9982f5e65A342D7b8CAd1Ab3C83585916D98542a",
+      "implementation": "0xf2FAD1eE20EE320a22b2246a00e9De7De388c6d6",
+      "upgradeable": true,
+      "previousImplementations": [
+        {
+          "address": "0xE39EF87A233161b948469B7143f0B7F998EEd465",
+          "upgradedAt": "2026-01-22T13:49:24.445Z"
+        },
+        {
+          "address": "0xE39EF87A233161b948469B7143f0B7F998EEd465",
+          "upgradedAt": "2026-01-22T13:49:53.404Z"
+        },
+        {
+          "address": "0x1d197d9C880e016Ec4f56b9BDF7e47e8B723B24e",
+          "upgradedAt": "2026-01-22T14:21:47.478Z"
+        },
+        {
+          "address": "0x1d197d9C880e016Ec4f56b9BDF7e47e8B723B24e",
+          "upgradedAt": "2026-01-22T14:22:06.717Z"
+        },
+        {
+          "address": "0xC5A910E57dBa3d544c23f85aaF8Da3B846392036",
+          "upgradedAt": "2026-01-23T07:46:22.551Z"
+        },
+        {
+          "address": "0xC5A910E57dBa3d544c23f85aaF8Da3B846392036",
+          "upgradedAt": "2026-01-23T07:46:55.134Z"
+        },
+        {
+          "address": "0x0977cf27feba1E1db06cE402aE8cc47edEC94F86",
+          "upgradedAt": "2026-01-23T08:08:06.272Z"
+        },
+        {
+          "address": "0x0977cf27feba1E1db06cE402aE8cc47edEC94F86",
+          "upgradedAt": "2026-01-23T19:45:11.678Z"
+        },
+        {
+          "address": "0x0977cf27feba1E1db06cE402aE8cc47edEC94F86",
+          "upgradedAt": "2026-01-23T20:50:43.914Z"
+        },
+        {
+          "address": "0x7E4A80cFF9bD750a66175b7b475c606A1694a12C",
+          "upgradedAt": "2026-01-23T20:52:46.548Z"
+        },
+        {
+          "address": "0xc3161835f1fAb217B3aE668d97d52f7680F20e93",
+          "upgradedAt": "2026-02-04T22:32:22.422Z"
+        },
+        {
+          "address": "0x654bc0A78459B74783aaeB45180F340108E8eD35",
+          "upgradedAt": "2026-02-05T01:39:36.474Z"
+        },
+        {
+          "address": "0x654bc0A78459B74783aaeB45180F340108E8eD35",
+          "upgradedAt": "2026-02-05T01:42:49.489Z"
+        }
+      ]
+    },
+    "OVGLandClaim": {
+      "proxy": "0x0feE250B12c8044fAE839D8F8fd056b46C82dAD0",
+      "implementation": "0x54b8979aAc624Ff6983A320aE9050bdC40A06402",
+      "upgradeable": true,
+      "previousImplementations": [
+        {
+          "address": "0xd480828873862d13002Fd8bD71132b5e67FABD6E",
+          "upgradedAt": "2026-01-23T19:46:43.831Z"
+        },
+        {
+          "address": "0xd480828873862d13002Fd8bD71132b5e67FABD6E",
+          "upgradedAt": "2026-02-10T14:49:01.869Z"
+        },
+        {
+          "address": "0xd480828873862d13002Fd8bD71132b5e67FABD6E",
+          "upgradedAt": "2026-02-10T14:49:42.593Z"
+        },
+        {
+          "address": "0xB7Cf0d6Cc27E7c793cB414783Ad13FEe188e1dDe",
+          "upgradedAt": "2026-02-10T17:05:42.893Z"
+        },
+        {
+          "address": "0xB7Cf0d6Cc27E7c793cB414783Ad13FEe188e1dDe",
+          "upgradedAt": "2026-02-10T17:06:37.877Z"
+        }
+      ]
+    },
+    "OVGMetadata": {
+      "proxy": "0x51f36d3A3491551c92D5cE087FF22Cc5010b6B0A",
+      "implementation": "0xba2f22587432b34D81969B891f64E489442Acc4F",
+      "upgradeable": true,
+      "previousImplementations": [
+        {
+          "address": "0x066b332f632A64be036936173e604A5cb370Ee42",
+          "upgradedAt": "2026-02-04T05:24:27.124Z"
+        },
+        {
+          "address": "0x066b332f632A64be036936173e604A5cb370Ee42",
+          "upgradedAt": "2026-02-04T05:25:44.675Z"
+        },
+        {
+          "address": "0xd77a024f44D45f8e9Feea49183c2bCF8f060E81a",
+          "upgradedAt": "2026-02-05T01:00:17.385Z"
+        }
+      ]
+    }
+  },
+  "timestamp": "2026-01-22T10:19:28.617Z",
+  "lastUpdated": "2026-02-10T17:06:37.877Z"
+}

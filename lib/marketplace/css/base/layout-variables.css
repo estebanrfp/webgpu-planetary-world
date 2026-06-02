@@ -1,0 +1,6 @@
+/* ========== Layout Variables ========== */
+    :root {
+      --header-height: 64px;
+      --subheader-height: 44px;
+      --sidebar-width: 200px;
+    }

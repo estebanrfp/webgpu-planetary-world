@@ -1,0 +1,395 @@
+/* ========== List View ========== */
+    .mp-card-grid.list-view {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .mp-card-grid.list-view .mp-card {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .mp-card-grid.list-view .mp-card-image {
+      aspect-ratio: 1;
+      width: 100px;
+      height: 100px;
+      border-radius: var(--mp-radius-pill);
+    }
+
+    .mp-card-grid.list-view .mp-card-badges {
+      top: 6px;
+      left: 6px;
+    }
+
+    .mp-card-grid.list-view .mp-badge {
+      font-size: 9px;
+      padding: 2px 6px;
+    }
+
+    .mp-card-grid.list-view .mp-card-actions {
+      position: static;
+      opacity: 1;
+      flex-direction: row;
+    }
+
+    .mp-card-grid.list-view .mp-card-action-btn {
+      width: 28px;
+      height: 28px;
+      font-size: 14px;
+      background: var(--mp-bg-card);
+    }
+
+    .mp-card-grid.list-view .mp-auction-timer {
+      position: static;
+      background: rgba(var(--mp-warning-rgb), 0.15);
+      border-radius: 6px;
+      padding: 4px 8px;
+      display: inline-flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .mp-card-grid.list-view .mp-card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .mp-card-grid.list-view .mp-card-title {
+      margin-bottom: 4px;
+    }
+
+    .mp-card-grid.list-view .mp-card-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    .mp-card-grid.list-view .mp-card-footer .mp-card-btn {
+      display: none;
+    }
+
+    .mp-card-grid.list-view .mp-card-price {
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mp-card-grid.list-view .mp-list-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      padding-right: 16px;
+    }
+
+    .mp-card-grid.list-view .mp-card-btn {
+      min-width: 80px;
+    }
+
+    .mp-card-grid.list-view .mp-list-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    /* Hide list-only elements in grid view */
+    .mp-card-grid:not(.list-view) .mp-list-actions,
+    .mp-card-grid:not(.list-view) .mp-list-meta {
+      display: none;
+    }
+
+    /* Show card-actions only on hover in grid view */
+    .mp-card-grid:not(.list-view) .mp-card .mp-card-actions {
+      opacity: 0;
+    }
+    .mp-card-grid:not(.list-view) .mp-card:hover .mp-card-actions {
+      opacity: 1;
+    }
+
+    .mp-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--mp-bg-card);
+      border: none;
+      border-radius: var(--mp-radius-pill);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mp-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px var(--mp-shadow), 0 0 12px var(--mp-glow);
+    }
+
+    .mp-card-image {
+      position: relative;
+      height: 120px;
+      flex-shrink: 0;
+      background: var(--mp-bg-input);
+      overflow: hidden;
+    }
+
+    .mp-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mp-card-badges {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      display: flex;
+      gap: 4px;
+    }
+
+    .mp-badge {
+      padding: 3px 6px;
+      border-radius: var(--mp-radius-pill);
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* Sale type badges (use semantic --mp-type-* variables) */
+    .mp-badge-sale { background: rgba(var(--mp-type-sale-rgb), 0.9); color: #fff; }
+    .mp-badge-auction { background: rgba(var(--mp-type-auction-rgb), 0.9); color: #fff; }
+    .mp-badge-rent { background: rgba(var(--mp-type-rent-rgb), 0.9); color: #fff; }
+    .mp-badge-bundle { background: rgba(var(--mp-type-bundle-rgb), 0.9); color: #fff; }
+
+    /* Inventory card badges */
+    .mp-badge-listed { background: rgba(var(--mp-accent-rgb), 0.9); color: #fff; }
+    .mp-badge-unlisted { background: rgba(var(--mp-common-rgb), 0.8); color: #fff; }
+    .mp-badge-rented { background: rgba(var(--mp-purple-rgb), 0.9); color: #fff; }
+
+    /* Inventory card specific styles */
+    .mp-card-inventory .mp-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .mp-card-inventory .mp-meta-qty {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+    .mp-card-inventory .mp-card-btn-edit {
+      background: rgba(var(--mp-warning-rgb), var(--mp-btn-bg-opacity));
+      color: var(--mp-text-white);
+    }
+    .mp-card-inventory .mp-card-btn-edit:hover {
+      background: rgba(var(--mp-warning-rgb), var(--mp-btn-bg-opacity-hover));
+    }
+    .mp-card-inventory .mp-card-btn-extend {
+      background: rgba(var(--mp-purple-rgb), var(--mp-btn-bg-opacity));
+      color: var(--mp-text-white);
+    }
+    .mp-card-inventory .mp-card-btn-extend:hover {
+      background: rgba(var(--mp-purple-rgb), var(--mp-btn-bg-opacity-hover));
+    }
+
+    /* Listed items in inventory - reduced opacity to indicate they're on marketplace */
+    .mp-card-inventory.listed {
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+    }
+    .mp-card-inventory.listed:hover {
+      opacity: 0.85;
+    }
+    .mp-card-inventory.listed .mp-card-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.15);
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    /* Bundle cards - yellow left border for quick identification */
+    .mp-card-inventory[data-status="bundle"],
+    .mp-card[data-type="bundle"] {
+      border-left: 6px solid #eab308;
+    }
+    .mp-table-row[data-status="bundle"],
+    .mp-table-row[data-type="bundle"] {
+      border-left: 6px solid #eab308;
+    }
+
+    /* Listed rows in inventory table */
+    .mp-table-row.listed {
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+    }
+    .mp-table-row.listed:hover {
+      opacity: 0.85;
+    }
+
+    /* Auction timer overlay */
+    .mp-auction-timer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 6px 10px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+
+    /* Bid increment presets */
+    .mp-bid-presets { display: flex; gap: 8px; margin-top: 8px; }
+    .mp-bid-preset {
+      flex: 1;
+      padding: 8px 12px;
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 8px;
+      color: var(--mp-text);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .mp-bid-preset:hover { border-color: var(--mp-warning); color: var(--mp-warning); background: rgba(var(--mp-warning-rgb), 0.1); }
+    .mp-bid-preset:active { transform: scale(0.97); }
+
+    .mp-card-actions {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .mp-card:hover .mp-card-actions { opacity: 1; }
+
+    .mp-card-action-btn {
+      width: 28px;
+      height: 28px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all 0.15s;
+    }
+
+    .mp-card-action-btn:hover { background: var(--mp-accent); }
+
+    .mp-card-content {
+      padding: 10px 12px;
+    }
+
+    .mp-card-collection {
+      font-size: 11px;
+      color: var(--mp-accent);
+      margin-bottom: 2px;
+    }
+
+    .mp-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+      margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mp-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mp-card-price { display: flex; flex-direction: column; gap: 1px; }
+
+    .mp-price-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--mp-success);
+    }
+
+    .mp-price-usd {
+      font-size: 10px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-card-btn {
+      padding: 6px 12px;
+      border-radius: var(--mp-radius-pill);
+      border: none;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mp-card-btn.buy {
+      background: rgba(var(--mp-success-rgb), var(--mp-btn-bg-opacity));
+      color: var(--mp-text-white);
+    }
+    .mp-card-btn.buy:hover { background: rgba(var(--mp-success-rgb), var(--mp-btn-bg-opacity-hover)); }
+
+    .mp-card-btn.bid {
+      background: rgba(var(--mp-warning-rgb), var(--mp-btn-bg-opacity));
+      color: var(--mp-text-white);
+    }
+    .mp-card-btn.bid:hover { background: rgba(var(--mp-warning-rgb), var(--mp-btn-bg-opacity-hover)); }
+
+    .mp-card-btn.rent {
+      background: rgba(var(--mp-pink-rgb), var(--mp-btn-bg-opacity));
+      color: var(--mp-text-white);
+    }
+    .mp-card-btn.rent:hover { background: rgba(var(--mp-pink-rgb), var(--mp-btn-bg-opacity-hover)); }
+
+    .mp-card-btn.list {
+      background: rgba(var(--mp-accent-rgb), var(--mp-btn-bg-opacity));
+      color: var(--mp-text-white);
+    }
+    .mp-card-btn.list:hover { background: rgba(var(--mp-accent-rgb), var(--mp-btn-bg-opacity-hover)); }
+
+    .mp-auction-timer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 8px 12px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mp-timer-label { font-size: 11px; color: var(--mp-text-muted); }
+    .mp-timer-value { font-size: 14px; font-weight: 600; color: var(--mp-warning); }
+
+    /* Ending soon - less than 30 minutes remaining */
+    .mp-timer-value.ending-soon {
+      color: var(--mp-danger);
+      animation: pulse-timer 1s ease-in-out infinite;
+    }
+    @keyframes pulse-timer {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* Table timer - subtle warning color to relate with Bid button */
+    .mp-table-ends-in { display: flex; align-items: center; gap: 4px; }
+    .mp-table-ends-in .mp-timer-label { font-size: 14px; }
+    .mp-table-ends-in .mp-timer-value { font-size: 14px; color: var(--mp-warning); font-weight: 500; }

@@ -1,0 +1,72 @@
+/* ========== Inventory Table Responsive ========== */
+    /* Inventory: 6 columns: item(1), category(2), rarity(3), qty(4), status(5), action(6) */
+    @media (max-width: 1024px) {
+      .mp-table-view.inventory-table .mp-table-header,
+      .mp-table-view.inventory-table .mp-table-row {
+        grid-template-columns: minmax(180px, 1fr) 90px 100px 80px 100px;
+        gap: 10px;
+      }
+      /* Hide QTY(4) */
+      .mp-table-view.inventory-table .mp-table-header-cell:nth-child(4),
+      .mp-table-view.inventory-table .mp-table-row > *:nth-child(4) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mp-table-view.inventory-table .mp-table-header,
+      .mp-table-view.inventory-table .mp-table-row {
+        grid-template-columns: minmax(150px, 1fr) 80px 100px !important;
+        gap: 10px;
+      }
+      /* Hide CATEGORY(2), RARITY(3), QTY(4) - show item, status, action */
+      .mp-table-view.inventory-table .mp-table-header-cell:nth-child(2),
+      .mp-table-view.inventory-table .mp-table-row > *:nth-child(2),
+      .mp-table-view.inventory-table .mp-table-header-cell:nth-child(3),
+      .mp-table-view.inventory-table .mp-table-row > *:nth-child(3),
+      .mp-table-view.inventory-table .mp-table-header-cell:nth-child(4),
+      .mp-table-view.inventory-table .mp-table-row > *:nth-child(4) {
+        display: none !important;
+      }
+      .mp-table-view.inventory-table .mp-table-avatar {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .mp-table-view.inventory-table .mp-table-header,
+      .mp-table-view.inventory-table .mp-table-row {
+        grid-template-columns: minmax(120px, 1fr) 70px 90px !important;
+        gap: 8px;
+      }
+      .mp-table-view.inventory-table .mp-table-action-btn {
+        padding: 6px 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mp-table-view.inventory-table .mp-table-header {
+        display: none;
+      }
+      .mp-table-view.inventory-table .mp-table-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px;
+        align-items: center;
+      }
+      .mp-table-view.inventory-table .mp-table-item {
+        order: 1;
+        flex: 1;
+        min-width: 0;
+      }
+      .mp-table-view.inventory-table .mp-table-status-cell {
+        order: 2;
+        display: flex !important;
+      }
+      .mp-table-view.inventory-table .mp-table-action-cell {
+        order: 3;
+        display: flex !important;
+      }
+    }

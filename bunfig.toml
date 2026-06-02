@@ -1,0 +1,26 @@
+# Bun configuration for OVGrid
+# https://bun.sh/docs/runtime/bunfig
+
+[bundle]
+# Entry points for code splitting
+entrypoints = ["./mainPlanet.js"]
+outdir = "./dist"
+splitting = true
+minify = true
+
+[bundle.define]
+# Environment variables
+"process.env.NODE_ENV" = "'production'"
+
+[install]
+# Use pnpm lockfile format for compatibility
+lockfile = "yarn"
+
+[serve]
+# Development server settings
+port = 3000
+
+[test]
+# Test configuration
+# Only run frontend tests, exclude blockchain tests (use Hardhat for those)
+root = "./lib"

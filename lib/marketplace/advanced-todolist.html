@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GenosDB To-Do List 📝</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+      display: grid;
+      place-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f2f5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    #taskInput {
+      flex: 1;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .filters button {
+      background-color: #e4e6eb;
+      color: #333;
+    }
+
+    .filters button.active {
+      background-color: #007bff;
+      color: white;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li.task-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem;
+      border-bottom: 1px solid #eee;
+      gap: 0.5rem;
+    }
+
+    li.task-item:last-child {
+      border-bottom: none;
+    }
+
+    .text {
+      flex: 1;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .text.completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    .actions button {
+      background: none;
+      border: none;
+      color: #333;
+      font-size: 0.9rem;
+      cursor: pointer;
+      padding: 0 6px;
+    }
+
+    .edit-input {
+      flex: 1;
+      padding: 0.4rem;
+      font-size: 1rem;
+      margin-right: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .status-bar {
+      margin-top: 1rem;
+      text-align: center;
+      color: #555;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1rem;
+      }
+
+      form,
+      .filters {
+        flex-direction: column;
+      }
+
+      .filters button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>GenosDB Full To-Do List 📝</h1>
+
+    <form id="addTaskForm">
+      <input type="text" id="taskInput" placeholder="What do you need to do?" required />
+      <button type="submit">Add</button>
+    </form>
+
+    <div class="filters">
+      <button data-filter="all" class="active">All</button>
+      <button data-filter="active">Active</button>
+      <button data-filter="completed">Completed</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <div class="status-bar">
+      <span id="tasksCount">0</span> pending tasks
+    </div>
+  </div>
+
+  <script type="module">
+    import { gdb } from "../dist/index.js";
+
+    // Create a GDB instance using the async factory
+    const db = await gdb("my-todo-list-app", { rtc: true });
+    const taskListElement = document.getElementById("taskList")
+    const addTaskForm = document.getElementById("addTaskForm")
+    const taskInput = document.getElementById("taskInput")
+    const filterButtons = document.querySelector(".filters")
+    const tasksCountElement = document.getElementById("tasksCount")
+
+    let currentFilter = "all"
+    let unsubscribeMap = null
+
+    function createTaskElement(id, task) {
+      const li = document.createElement("li")
+      li.className = "task-item"
+      li.dataset.id = id
+      if (task.completed) li.classList.add("task-completed-item")
+
+      const checkbox = document.createElement("input")
+      checkbox.type = "checkbox"
+      checkbox.checked = task.completed
+      checkbox.addEventListener("change", () =>
+        toggleTaskComplete(id, task),
+      )
+
+      const span = document.createElement("span")
+      span.className = "text"
+      span.textContent = task.text
+      if (task.completed) span.classList.add("completed")
+      span.addEventListener("click", () => enableEditMode(li, id, task))
+
+      const actions = document.createElement("div")
+      actions.className = "actions"
+
+      const editBtn = document.createElement("button")
+      editBtn.textContent = "Edit"
+      editBtn.title = "Edit task"
+      editBtn.addEventListener("click", () => enableEditMode(li, id, task))
+
+      const deleteBtn = document.createElement("button")
+      deleteBtn.textContent = "Delete"
+      deleteBtn.title = "Delete task"
+      deleteBtn.addEventListener("click", () => deleteTask(id))
+
+      actions.append(editBtn, deleteBtn)
+      li.append(checkbox, span, actions)
+      return li
+    }
+
+    function enableEditMode(li, id, task) {
+      const span = li.querySelector(".text")
+      const current = task.text
+      span.style.display = "none"
+
+      const input = document.createElement("input")
+      input.className = "edit-input"
+      input.type = "text"
+      input.value = current
+      li.insertBefore(input, li.querySelector(".actions"))
+      input.focus()
+
+      const save = async () => {
+        const newText = input.value.trim()
+        if (newText && newText !== current) {
+          await updateTask(id, { ...task, text: newText })
+        }
+        span.style.display = ""
+        input.remove()
+      }
+
+      input.addEventListener("blur", save)
+      input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") input.blur()
+      })
+    }
+
+    function applyFilter() {
+      const tasks = taskListElement.querySelectorAll(".task-item")
+      let activeCount = 0
+      tasks.forEach((el) => {
+        const completed = el.classList.contains("task-completed-item")
+        const visible =
+          currentFilter === "all" ||
+          (currentFilter === "active" && !completed) ||
+          (currentFilter === "completed" && completed)
+
+        el.style.display = visible ? "flex" : "none"
+        if (!completed) activeCount++
+      })
+      tasksCountElement.textContent = activeCount
+    }
+
+    filterButtons.addEventListener("click", (e) => {
+      if (e.target.tagName !== "BUTTON") return
+      currentFilter = e.target.dataset.filter
+      filterButtons
+        .querySelectorAll("button")
+        .forEach((btn) => btn.classList.remove("active"))
+      e.target.classList.add("active")
+      applyFilter()
+    })
+
+    async function addTask(text) {
+      if (!text.trim()) return
+      await db.put({
+        type: "task",
+        text: text.trim(),
+        completed: false,
+        createdAt: Date.now(),
+      })
+      taskInput.value = ""
+    }
+
+    async function toggleTaskComplete(id, task) {
+      await db.put({ ...task, completed: !task.completed }, id)
+    }
+
+    async function updateTask(id, updated) {
+      await db.put(updated, id)
+    }
+
+    async function deleteTask(id) {
+      if (confirm("Are you sure you want to delete this task?")) {
+        await db.remove(id)
+      }
+    }
+
+    await db.map(
+      { query: { type: "task" }, field: "createdAt", order: "asc" },
+      ({ id, value, action }) => {
+        const el = taskListElement.querySelector(`[data-id="${id}"]`)
+        if (action === "initial" || action === "added") {
+          if (!el) {
+            taskListElement.append(createTaskElement(id, value))
+          } else {
+            const span = el.querySelector(".text")
+            const checkbox = el.querySelector("input[type='checkbox']")
+            span.textContent = value.text
+            checkbox.checked = value.completed
+            span.classList.toggle("completed", value.completed)
+            el.classList.toggle("task-completed-item", value.completed)
+          }
+        } else if (action === "updated" && el) {
+          const span = el.querySelector(".text")
+          const checkbox = el.querySelector("input[type='checkbox']")
+          const editInput = el.querySelector(".edit-input")
+          if (
+            editInput &&
+            document.activeElement === editInput &&
+            editInput.value !== value.text
+          ) {
+          } else {
+            editInput?.remove()
+            span.style.display = ""
+            span.textContent = value.text
+          }
+          checkbox.checked = value.completed
+          span.classList.toggle("completed", value.completed)
+          el.classList.toggle("task-completed-item", value.completed)
+        } else if (action === "removed" && el) {
+          el.remove()
+        }
+        applyFilter()
+      }
+    )
+
+    addTaskForm.addEventListener("submit", (e) => {
+      e.preventDefault()
+      addTask(taskInput.value)
+    })
+  </script>
+</body>
+
+</html>

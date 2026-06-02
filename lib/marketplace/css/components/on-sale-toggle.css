@@ -1,0 +1,12 @@
+/* ========== On Sale Toggle ========== */
+    .mp-toggle-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0;
+    }
+
+    .mp-toggle-label {
+      font-size: 13px;
+      color: var(--mp-text);
+    }

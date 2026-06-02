@@ -1,0 +1,291 @@
+/**
+ * OVGrid Land Map - External CSS Module
+ * Styles for the interactive 2D land map view
+ */
+
+/* ========== Land Map Container ========== */
+.mp-land-view {
+  display: none;
+  position: absolute;
+  top: calc(var(--header-height) + var(--subheader-height));
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  overflow: hidden;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.mp-land-view.active {
+  display: block;
+}
+
+/* Hide main content and pagination when land view is active (sidebar stays visible) */
+.marketplace-app.land-active .mp-main,
+.marketplace-app.land-active .mp-pagination {
+  display: none;
+}
+
+/* Land sidebar legend items */
+.mp-land-sidebar-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 0;
+}
+
+.mp-land-sidebar-legend .mp-land-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--mp-text-muted);
+}
+
+.mp-land-sidebar-legend .mp-land-legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.mp-land-legend-separator {
+  height: 1px;
+  background: var(--mp-border-light);
+  margin: 4px 12px;
+}
+
+/* Land filter pill colored borders */
+.mp-filter-pill[data-land-filter="sale"].active { border-left-color: var(--mp-type-sale); }
+.mp-filter-pill[data-land-filter="auction"].active { border-left-color: var(--mp-type-auction); }
+.mp-filter-pill[data-land-filter="rent"].active { border-left-color: var(--mp-type-rent); }
+.mp-filter-pill[data-land-filter="owned"].active { border-left-color: var(--mp-purple); }
+
+/* ========== Map Controls ========== */
+.mp-land-map-controls {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.mp-land-map-control-btn {
+  width: 44px;
+  height: 44px;
+  background: var(--mp-bg-modal);
+  border: 1px solid var(--mp-border);
+  border-radius: 10px;
+  color: var(--mp-text);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.mp-land-map-control-btn:hover {
+  background: var(--mp-bg-hover);
+  border-color: var(--mp-accent);
+}
+
+.mp-land-map-control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mp-land-my-land-btn {
+  background: rgba(var(--mp-purple-rgb), 0.2);
+  border-color: rgba(var(--mp-purple-rgb), 0.3);
+}
+
+.mp-land-zoom-level {
+  text-align: center;
+  font-size: 12px;
+  color: var(--mp-text-muted);
+  padding: 4px 0;
+}
+
+/* ========== Minimap ========== */
+.mp-land-minimap {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  width: 180px;
+  height: 180px;
+  background: var(--mp-bg-modal);
+  border: 1px solid var(--mp-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.mp-land-minimap-header {
+  padding: 8px 12px;
+  background: var(--mp-bg-secondary);
+  border-bottom: 1px solid var(--mp-border-light);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mp-text-muted);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+}
+
+#minimapCanvas {
+  display: block;
+}
+
+/* ========== Legend ========== */
+.mp-land-legend {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  background: var(--mp-bg-modal);
+  border: 1px solid var(--mp-border);
+  border-radius: 12px;
+  padding: 16px;
+  min-width: 180px;
+  pointer-events: auto;
+}
+
+.mp-land-legend-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mp-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.mp-land-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 13px;
+  color: var(--mp-text);
+}
+
+.mp-land-legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mp-land-legend-count {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--mp-text-muted);
+}
+
+/* Legend color classes (use CSS variables) */
+.mp-land-legend-color.sale { background: var(--mp-land-sale); }
+.mp-land-legend-color.auction { background: var(--mp-land-auction); }
+.mp-land-legend-color.rent { background: var(--mp-land-rent); }
+.mp-land-legend-color.owned { background: var(--mp-land-owned); }
+.mp-land-legend-color.region { background: var(--mp-land-region); }
+.mp-land-legend-color.state { background: var(--mp-land-state); }
+.mp-land-legend-color.equator { background: var(--mp-land-equator); }
+
+/* Legend title with margin-top for sections */
+.mp-land-legend-title.section { margin-top: 12px; }
+
+/* ========== Responsive Design ========== */
+@media (max-width: 1024px) {
+  .mp-land-view {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .mp-land-legend,
+  .mp-land-minimap {
+    display: none;
+  }
+
+  .mp-land-coords-display {
+    top: auto;
+    bottom: 80px;
+    right: 16px;
+  }
+
+  .mp-land-map-controls {
+    bottom: 80px;
+    right: 16px;
+  }
+
+  .mp-land-filter-bar {
+    display: none;
+  }
+}
+
+/* ========== Parcel Map Mode (transparent overlay) ========== */
+
+/* Overlay backdrop: fully transparent, pass clicks to planet canvas */
+.mockup-marketplace-overlay.mp-parcel-map-mode {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  pointer-events: none;
+}
+
+/* App container: transparent so planet shows through */
+.mockup-marketplace-overlay.mp-parcel-map-mode .marketplace-app {
+  background: transparent !important;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+/* Header: semi-transparent glass, clickable */
+.mockup-marketplace-overlay.mp-parcel-map-mode .mp-header {
+  pointer-events: auto;
+  background: rgba(15, 15, 20, 0.85) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* Subheader: semi-transparent glass, clickable */
+.mockup-marketplace-overlay.mp-parcel-map-mode .mp-subheader {
+  pointer-events: auto;
+  background: rgba(15, 15, 20, 0.75) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Hide main content area (card grid, pagination) */
+.mockup-marketplace-overlay.mp-parcel-map-mode .mp-main {
+  display: none !important;
+}
+
+/* Sidebar: semi-transparent glass, clickable */
+.mockup-marketplace-overlay.mp-parcel-map-mode .mp-sidebar {
+  pointer-events: auto;
+  background: rgba(15, 15, 20, 0.75) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Modals must be clickable in map mode */
+.mockup-marketplace-overlay.mp-parcel-map-mode .mp-modal-overlay {
+  pointer-events: auto;
+}
+
+/* Hide FAB mint button */
+.mockup-marketplace-overlay.mp-parcel-map-mode .mp-fab {
+  display: none;
+}
+
+/* Hide selection bar */
+.mockup-marketplace-overlay.mp-parcel-map-mode .mp-selection-bar {
+  display: none;
+}
+
+/* Close button and nav tabs stay interactive */
+.mockup-marketplace-overlay.mp-parcel-map-mode .mp-close-btn,
+.mockup-marketplace-overlay.mp-parcel-map-mode .mp-nav-tabs,
+.mockup-marketplace-overlay.mp-parcel-map-mode .mp-header-right {
+  pointer-events: auto;
+}

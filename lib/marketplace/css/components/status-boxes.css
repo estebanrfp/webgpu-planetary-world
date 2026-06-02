@@ -1,0 +1,198 @@
+/* ========== Status Boxes ========== */
+    .mp-status-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .mp-status-box {
+      flex: 1;
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      background: rgba(var(--mp-common-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-common-rgb), 0.2);
+    }
+    .mp-status-box .mp-status-box-label { color: var(--mp-text-muted); }
+
+    .mp-status-box-label {
+      font-size: 12px;
+      font-weight: 600;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .mp-status-box-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--mp-text-white);
+      display: block;
+    }
+
+    .mp-status-price {
+      background: rgba(var(--mp-success-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-success-rgb), 0.2);
+    }
+    .mp-status-price .mp-status-box-label { color: var(--mp-success); }
+
+    .mp-status-wallet {
+      background: rgba(var(--mp-purple-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-purple-rgb), 0.2);
+    }
+    .mp-status-wallet .mp-status-box-label { color: var(--mp-purple); }
+
+    .mp-status-royalty-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      font-size: inherit;
+      background: rgba(var(--mp-accent-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-accent-rgb), 0.2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .mp-status-royalty-btn .mp-status-box-label { color: var(--mp-accent); }
+    .mp-status-royalty-btn .mp-status-box-value { color: var(--mp-text-white); }
+    .mp-status-royalty-btn:hover {
+      background: rgba(var(--mp-accent-rgb), 0.2);
+      border-color: rgba(var(--mp-accent-rgb), 0.4);
+      transform: translateY(-1px);
+    }
+    .mp-status-royalty-btn:active {
+      transform: translateY(0);
+    }
+    /* Non-interactive royalty box for buyers */
+    .mp-status-royalty-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      font-size: inherit;
+      background: rgba(var(--mp-accent-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-accent-rgb), 0.2);
+      cursor: default;
+    }
+    .mp-status-royalty-info .mp-status-box-label { color: var(--mp-accent); }
+    .mp-status-royalty-info .mp-status-box-value { color: var(--mp-text-white); }
+    .mp-status-royalty-info:hover { transform: none; }
+
+    .mp-status-auction {
+      background: rgba(var(--mp-warning-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-warning-rgb), 0.2);
+    }
+    .mp-status-auction .mp-status-box-label { color: var(--mp-warning); }
+
+    .mp-status-rent {
+      background: rgba(var(--mp-rent-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-rent-rgb), 0.2);
+    }
+    .mp-status-rent .mp-status-box-label { color: var(--mp-rent); }
+
+    .mp-status-sale {
+      background: rgba(var(--mp-success-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-success-rgb), 0.2);
+    }
+    .mp-status-sale .mp-status-box-label { color: var(--mp-success); }
+
+    .mp-status-bundle {
+      background: rgba(var(--mp-purple-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-purple-rgb), 0.2);
+    }
+    .mp-status-bundle .mp-status-box-label { color: var(--mp-purple); }
+
+    .mp-status-time {
+      background: rgba(var(--mp-danger-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-danger-rgb), 0.2);
+    }
+    .mp-status-time .mp-status-box-label { color: var(--mp-danger); }
+    .mp-status-time .mp-status-box-value { font-family: monospace; }
+
+    /* Auction Progress Bar */
+    .mp-auction-progress {
+      margin: 16px 0;
+    }
+
+    .mp-auction-progress-bar {
+      height: 8px;
+      background: var(--mp-bg-input);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .mp-auction-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--mp-warning), var(--mp-success));
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .mp-auction-progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-auction-progress-labels strong {
+      color: var(--mp-text);
+    }
+
+    /* Bid Validation */
+    .mp-bid-validation {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: rgba(var(--mp-danger-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-danger-rgb), 0.2);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: var(--mp-danger);
+    }
+
+    .mp-bid-validation.valid {
+      background: rgba(var(--mp-success-rgb), 0.1);
+      border-color: rgba(var(--mp-success-rgb), 0.2);
+      color: var(--mp-success);
+    }
+
+    .mp-bid-validation-icon {
+      font-size: 16px;
+    }
+
+    /* Info Boxes */
+    .mp-info-box {
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .mp-info-warning {
+      background: rgba(var(--mp-warning-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-warning-rgb), 0.2);
+      color: var(--mp-warning);
+    }
+
+    .mp-info-accent {
+      background: rgba(var(--mp-accent-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-accent-rgb), 0.2);
+      color: var(--mp-accent);
+    }
+
+    .mp-info-success {
+      background: rgba(var(--mp-success-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-success-rgb), 0.2);
+      color: var(--mp-success);
+    }

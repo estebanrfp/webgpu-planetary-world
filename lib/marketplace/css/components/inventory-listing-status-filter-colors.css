@@ -1,0 +1,6 @@
+/* ========== Inventory Listing Status Filter Colors ========== */
+    .mp-filter-option[data-inventory-status="unlisted"].selected .mp-filter-checkbox { background: var(--mp-common); border-color: var(--mp-common); }
+    .mp-filter-option[data-inventory-status="sale"].selected .mp-filter-checkbox { background: var(--mp-type-sale); border-color: var(--mp-type-sale); }
+    .mp-filter-option[data-inventory-status="rent"].selected .mp-filter-checkbox { background: var(--mp-type-rent); border-color: var(--mp-type-rent); }
+    .mp-filter-option[data-inventory-status="auction"].selected .mp-filter-checkbox { background: var(--mp-type-auction); border-color: var(--mp-type-auction); }
+    .mp-filter-option[data-inventory-status="rented-in"].selected .mp-filter-checkbox { background: var(--mp-purple); border-color: var(--mp-purple); }

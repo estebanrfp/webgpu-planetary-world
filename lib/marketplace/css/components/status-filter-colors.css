@@ -1,0 +1,5 @@
+/* ========== Status Filter Colors ========== */
+    .mp-filter-option[data-type="sale"].selected .mp-filter-checkbox { background: var(--mp-type-sale); border-color: var(--mp-type-sale); }
+    .mp-filter-option[data-type="rent"].selected .mp-filter-checkbox { background: var(--mp-type-rent); border-color: var(--mp-type-rent); }
+    .mp-filter-option[data-type="auction"].selected .mp-filter-checkbox { background: var(--mp-type-auction); border-color: var(--mp-type-auction); }
+    .mp-filter-option[data-type="bundle"].selected .mp-filter-checkbox { background: var(--mp-type-bundle); border-color: var(--mp-type-bundle); }

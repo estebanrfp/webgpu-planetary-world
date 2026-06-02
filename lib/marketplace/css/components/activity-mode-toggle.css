@@ -1,0 +1,67 @@
+/* ========== Activity Mode Toggle ========== */
+    .mp-activity-mode-toggle {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .mp-mode-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--mp-bg-input);
+      border: 2px solid var(--mp-border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mp-mode-btn:hover {
+      background: var(--mp-bg-hover);
+      border-color: var(--mp-text-muted);
+    }
+
+    .mp-mode-btn.active {
+      background: rgba(var(--mp-accent-rgb), 0.15);
+      border-color: var(--mp-accent);
+    }
+
+    .mp-mode-icon {
+      font-size: 18px;
+    }
+
+    .mp-mode-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-text);
+    }
+
+    .mp-mode-btn.active .mp-mode-label {
+      color: var(--mp-accent);
+    }
+
+    .mp-activity-mode-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: rgba(var(--mp-accent-rgb), 0.08);
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-mode-info-icon {
+      font-size: 14px;
+    }
+
+    .mp-activity-mode-info.personal {
+      background: rgba(var(--mp-purple-rgb), 0.1);
+    }
+
+    .mp-activity-mode-info.personal .mp-mode-info-icon {
+      color: var(--mp-purple);
+    }

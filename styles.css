@@ -1,0 +1,633 @@
+/**
+ * WebGPU Atmospheric Scattering Demo - Styles
+ *
+ * This stylesheet provides the visual styling for the WebGPU atmosphere demo,
+ * including dark theme, fullscreen canvas layout, help overlay, and GitHub banner.
+ */
+
+/* ============================================================================
+ * Root and Base Styles
+ * ============================================================================ */
+
+:root {
+  color-scheme: dark;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #050505;
+}
+
+body {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+/* ============================================================================
+ * Canvas - Fullscreen rendering surface
+ * ============================================================================ */
+
+#webgpu-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ============================================================================
+ * FPS Overlay - Persistent FPS counter (bottom-right)
+ * Always visible to make FPS comparisons easy when tweaking terrain sliders.
+ * ============================================================================ */
+
+:root {
+  --fps-overlay-bg: rgba(0, 0, 0, 0.55);
+  --fps-overlay-color: #6f6;
+  --fps-overlay-padding: 6px 10px;
+  --fps-overlay-radius: 6px;
+  --fps-overlay-font-size: 14px;
+}
+
+#fps-overlay {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 9999;
+  background: var(--fps-overlay-bg);
+  color: var(--fps-overlay-color);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: var(--fps-overlay-font-size);
+  font-weight: 600;
+  padding: var(--fps-overlay-padding);
+  border-radius: var(--fps-overlay-radius);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ============================================================================
+ * Help Overlay - Interactive controls guide
+ * ============================================================================ */
+
+#help {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  font-family: monospace;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+#help.hidden {
+  display: none;
+}
+
+ul {
+  padding-left: 1em;
+}
+
+li {
+  list-style: none;
+}
+
+/* ============================================================================
+ * Status Message - WebGPU availability notice
+ * ============================================================================ */
+
+.status {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  max-width: 90%;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
+}
+
+.status.hidden {
+  display: none;
+}
+
+/* ============================================================================
+ * Repository Banner - GitHub link at bottom
+ * ============================================================================ */
+
+#repo-banner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+#repo-banner a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  text-decoration: none;
+  pointer-events: auto;
+  transition: background 150ms ease;
+}
+
+#repo-banner a:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+#repo-banner svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+/* ============================================================================
+ * Parcel Coordinate Overlay - Top right corner
+ * ============================================================================ */
+
+#parcel-coord-overlay {
+  position: absolute;
+  top: 28px;
+  right: 70px;
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 6px 12px;
+  border-radius: 6px;
+  pointer-events: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+#parcel-coord-overlay.owned {
+  background: rgba(167, 139, 250, 0.45);
+}
+
+/* Weather force-test badges — shown only while a manual override is active.
+ * R = rain (blue palette), Ñ = snow (cool white palette). Same chip layout. */
+#weather-force-badge,
+#weather-force-badge-snow {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #cfe8ff;
+  font-family: monospace;
+  font-size: 0.8rem;
+  background: rgba(20, 60, 110, 0.78);
+  border: 1px solid rgba(120, 180, 255, 0.5);
+  padding: 6px 14px;
+  border-radius: 6px;
+  pointer-events: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  display: none;
+}
+
+#weather-force-badge-snow {
+  color: #f4faff;
+  background: rgba(180, 200, 230, 0.78);
+  border-color: rgba(255, 255, 255, 0.7);
+  text-shadow: 1px 1px 2px rgba(60, 80, 110, 0.8);
+}
+
+#weather-force-badge.visible,
+#weather-force-badge-snow.visible {
+  display: block;
+}
+
+/* ============================================================================
+ * Calendar - Stardew-style date HUD widget + calendar panel
+ * ============================================================================ */
+
+:root {
+  --cal-bg: rgba(18, 20, 30, 0.82);
+  --cal-border: rgba(120, 130, 170, 0.35);
+  --cal-text: #e8e8f0;
+  --cal-muted: #9aa0b8;
+  --cal-accent: #f5c451;
+  --cal-radius: 10px;
+  --season-spring: #6fcf6f;
+  --season-summer: #f5c451;
+  --season-autumn: #e08a4b;
+  --season-winter: #7fb8e6;
+}
+
+#calendar-hud {
+  position: absolute;
+  top: 60px;
+  right: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 112px;
+  padding: 7px 12px;
+  background: var(--cal-bg);
+  border: 1px solid var(--cal-border);
+  border-radius: var(--cal-radius);
+  color: var(--cal-text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  z-index: 11;
+  cursor: pointer;
+  pointer-events: auto;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.2s, transform 0.1s;
+  user-select: none;
+}
+
+#calendar-hud:hover {
+  border-color: var(--cal-accent);
+}
+
+#calendar-hud:active {
+  transform: scale(0.97);
+}
+
+.cal-hud-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cal-hud-row--sub {
+  align-items: center;
+}
+
+.cal-hud-season {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.cal-hud-day {
+  font-size: 11px;
+  color: var(--cal-muted);
+}
+
+.cal-hud-clock {
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.cal-hud-moon {
+  font-size: 13px;
+}
+
+.cal-season--spring { color: var(--season-spring); }
+.cal-season--summer { color: var(--season-summer); }
+.cal-season--autumn { color: var(--season-autumn); }
+.cal-season--winter { color: var(--season-winter); }
+
+#calendar-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 440px;
+  padding: 18px;
+  background: var(--cal-bg);
+  border: 1px solid var(--cal-border);
+  border-radius: 14px;
+  color: var(--cal-text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  z-index: 120;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+  display: none;
+}
+
+.cal-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.cal-panel-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cal-panel-year {
+  font-size: 12px;
+  color: var(--cal-muted);
+}
+
+.cal-panel-close {
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--cal-border);
+  border-radius: 6px;
+  color: var(--cal-muted);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cal-panel-close:hover {
+  background: rgba(255, 90, 90, 0.25);
+  color: #fff;
+}
+
+.cal-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.cal-tab {
+  flex: 1;
+  padding: 6px 0;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.cal-tab.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--cal-border);
+}
+
+.cal-tab.current {
+  opacity: 1;
+}
+
+.cal-tab.current::after {
+  content: '•';
+  margin-left: 5px;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cal-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 7px 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
+}
+
+.cal-day-num {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--cal-muted);
+}
+
+.cal-day-weather {
+  font-size: 19px;
+  line-height: 1.1;
+}
+
+.cal-day.current {
+  background: rgba(245, 196, 81, 0.18);
+  border-color: var(--cal-accent);
+}
+
+.cal-day.current .cal-day-num {
+  color: var(--cal-accent);
+}
+
+.cal-panel-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--cal-border);
+  font-size: 12px;
+}
+
+.cal-foot-clock {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.cal-foot-moon {
+  color: var(--cal-muted);
+}
+
+/* Time-warp slider — accelerates the world clock from inside the calendar. */
+.cal-timewarp {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--cal-border);
+  font-size: 12px;
+}
+
+.cal-timewarp .slider-container {
+  flex: 1;
+}
+
+.cal-timewarp-label {
+  color: var(--cal-muted);
+  white-space: nowrap;
+}
+
+.cal-timewarp-val {
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--cal-accent);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ===== Global loading spinner (window.appSpinner) =====
+   Small, non-blocking pill badge shown during async loads (blockchain,
+   marketplace, lazy modules). Reuses the app's dark glass look. */
+:root {
+  --app-spinner-top: 16px;
+  --app-spinner-z: 100000;
+  --app-spinner-bg: rgba(18, 20, 30, 0.82);
+  --app-spinner-border: rgba(120, 130, 170, 0.35);
+  --app-spinner-text: #e8eaed;
+  --app-spinner-size: 18px;
+  --app-spinner-track: rgba(255, 255, 255, 0.22);
+  --app-spinner-accent: #4ea1ff;
+}
+
+.app-spinner {
+  position: fixed;
+  top: var(--app-spinner-top);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  background: var(--app-spinner-bg);
+  border: 1px solid var(--app-spinner-border);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  color: var(--app-spinner-text);
+  font: 500 13px/1 system-ui, -apple-system, sans-serif;
+  z-index: var(--app-spinner-z);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.app-spinner.is-visible {
+  display: inline-flex;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.app-spinner__ring {
+  width: var(--app-spinner-size);
+  height: var(--app-spinner-size);
+  border: 2px solid var(--app-spinner-track);
+  border-top-color: var(--app-spinner-accent);
+  border-radius: 50%;
+  animation: app-spinner-spin 0.7s linear infinite;
+  flex: 0 0 auto;
+}
+
+@keyframes app-spinner-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Boot requirements gate (WebGPU / HTML-in-Canvas) =====
+   Full-screen blocking modal shown when a hard requirement is missing, so the
+   world never boots without it. See lib/core/requirements.js. */
+.req-gate {
+  --req-bg: rgba(8, 12, 20, 0.92);
+  --req-card: rgba(20, 26, 38, 0.96);
+  --req-border: rgba(120, 160, 220, 0.18);
+  --req-accent: #34d3ff;
+  --req-text: #e8eef6;
+  --req-muted: #9fb0c4;
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--req-bg);
+  backdrop-filter: blur(8px);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--req-text);
+}
+
+.req-card {
+  max-width: 460px;
+  width: 100%;
+  padding: 32px 30px;
+  border-radius: 16px;
+  background: var(--req-card);
+  border: 1px solid var(--req-border);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.req-logo {
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--req-accent);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.req-title { font-size: 21px; margin: 0 0 10px; }
+
+.req-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--req-muted);
+  margin: 0 0 18px;
+}
+
+.req-flag {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--req-border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin: 0 0 18px;
+}
+
+.req-flag code {
+  flex: 1;
+  font-size: 12px;
+  color: var(--req-accent);
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.req-copy,
+.req-reload {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--req-border);
+  background: rgba(52, 211, 255, 0.12);
+  color: var(--req-text);
+}
+
+.req-copy { font-size: 12px; padding: 6px 12px; }
+
+.req-reload {
+  margin-top: 6px;
+  background: var(--req-accent);
+  color: #06121c;
+  font-weight: 600;
+  padding: 10px 22px;
+}
+
+.req-steps {
+  text-align: left;
+  margin: 0 0 18px;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--req-muted);
+}
+
+.req-steps strong { color: var(--req-text); }
+
+.req-detail {
+  font-size: 11px;
+  color: var(--req-muted);
+  opacity: 0.7;
+  margin: 10px 0 0;
+}

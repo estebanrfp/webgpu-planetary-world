@@ -1,0 +1,29 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "hardhat test",
+    "test:upgrades": "hardhat test test/Upgrades.test.js",
+    "compile": "hardhat compile",
+    "deploy:amoy": "hardhat run scripts/deploy.js --network polygonAmoy",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network polygonMainnet",
+    "deploy:amoy:upgradeable": "hardhat run scripts/deploy-upgradeable.js --network polygonAmoy",
+    "deploy:mainnet:upgradeable": "hardhat run scripts/deploy-upgradeable.js --network polygonMainnet",
+    "upgrade:amoy": "hardhat run scripts/upgrade-contract.js --network polygonAmoy",
+    "upgrade:mainnet": "hardhat run scripts/upgrade-contract.js --network polygonMainnet"
+  },
+  "keywords": [],
+  "author": "Esteban Fuster Pozzi <estebanrfp@gmail.com> (https://github.com/estebanrfp)",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "5.0.0",
+    "@openzeppelin/contracts": "5.4.0",
+    "@openzeppelin/contracts-upgradeable": "5.4.0",
+    "@openzeppelin/hardhat-upgrades": "3.9.1",
+    "dotenv": "17.2.3",
+    "ethers": "6.16.0",
+    "hardhat": "2.28.3"
+  }
+}

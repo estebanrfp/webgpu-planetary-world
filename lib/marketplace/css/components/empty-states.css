@@ -1,0 +1,23 @@
+/* ========== Empty States ========== */
+    .mp-empty-state {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .mp-empty-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .mp-empty-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+      margin-bottom: 8px;
+    }
+
+    .mp-empty-text {
+      font-size: 14px;
+      color: var(--mp-text-muted);
+      margin-bottom: 20px;
+    }

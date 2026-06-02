@@ -1,0 +1,40 @@
+/* ========== Stats Dashboard ========== */
+    .mp-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .mp-stat-card {
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .mp-stat-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .mp-stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--mp-text-white);
+      margin-bottom: 4px;
+    }
+
+    .mp-stat-label {
+      font-size: 13px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-stat-change {
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .mp-stat-change.positive { color: var(--mp-success); }
+    .mp-stat-change.negative { color: var(--mp-danger); }

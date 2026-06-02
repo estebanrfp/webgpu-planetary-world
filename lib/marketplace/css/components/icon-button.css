@@ -1,0 +1,20 @@
+/* ========== Icon Button ========== */
+    .mp-icon-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 10px;
+      color: var(--mp-text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s;
+    }
+
+    .mp-icon-btn:hover {
+      background: var(--mp-bg-hover);
+      border-color: var(--mp-accent);
+    }

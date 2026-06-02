@@ -1,0 +1,205 @@
+/* ========== Inventory Grid ========== */
+    .mp-inventory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .mp-inventory-item {
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mp-inventory-item:hover {
+      border-color: var(--mp-accent);
+    }
+
+    .mp-inventory-item.selected {
+      border-color: var(--mp-accent);
+      box-shadow: 0 0 0 2px var(--mp-glow);
+    }
+
+    .mp-inventory-image {
+      aspect-ratio: 1;
+      background: var(--mp-bg-input);
+    }
+
+    .mp-inventory-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mp-inventory-info {
+      padding: 10px;
+    }
+
+    /* Bundle Modal - List Layout */
+    #bundleModal .mp-inventory-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+
+    #bundleModal .mp-inventory-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+    }
+
+    #bundleModal .mp-inventory-image {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      aspect-ratio: auto;
+      border-radius: 8px;
+    }
+
+    #bundleModal .mp-inventory-info {
+      flex: 1;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    #bundleModal .mp-inventory-name {
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    #bundleModal .mp-inventory-qty {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    #bundleModal .mp-inventory-item.selected::after {
+      content: '✓';
+      width: 24px;
+      height: 24px;
+      background: var(--mp-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .mp-inventory-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mp-text-white);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mp-inventory-qty {
+      font-size: 11px;
+      color: var(--mp-text-muted);
+    }
+
+    /* Edit Bundle Modal - Compact Grid */
+    .mp-inventory-grid-small {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+    }
+
+    .mp-inventory-item-readonly {
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .mp-inventory-item-readonly .mp-inventory-image {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .mp-inventory-item-readonly .mp-inventory-info {
+      padding: 8px 4px;
+    }
+
+    .mp-inventory-item-readonly .mp-inventory-name {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    /* Bundle Items List (Edit Bundle Modal) */
+    .mp-bundle-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+
+    .mp-bundle-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 8px;
+    }
+
+    .mp-bundle-item-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .mp-bundle-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mp-bundle-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mp-bundle-item-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mp-text-white);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mp-bundle-item-remove {
+      width: 28px;
+      height: 28px;
+      border: none;
+      background: rgba(var(--mp-danger-rgb), 0.15);
+      color: var(--mp-danger);
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+
+    .mp-bundle-item-remove:hover {
+      background: rgba(var(--mp-danger-rgb), 0.25);
+    }
+
+    .mp-mt-8 { margin-top: 8px; }

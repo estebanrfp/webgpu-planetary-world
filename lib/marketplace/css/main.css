@@ -1,0 +1,92 @@
+/* OVGrid Marketplace - Modular CSS */
+/* Auto-generated from styles-backup.css - 2026-02-02 */
+/* Total: 67 modules, 7991 lines */
+/* IMPORTANT: Import order matches original monolith for correct cascade */
+
+/* Color Variables */
+@import './themes/dark-theme-default-ovgrid.css';
+
+/* Base */
+@import './base/layout-variables.css';
+@import './base/reset.css';
+@import './base/layout-structure.css';
+
+/* Components */
+@import './components/header.css';
+@import './components/subheader.css';
+@import './components/header-icons.css';
+@import './components/icon-button.css';
+@import './components/sidebar-filters.css';
+@import './components/main-content.css';
+@import './components/card-grid.css';
+@import './components/list-view.css';
+@import './components/modal-system.css';
+
+/* Views */
+@import './views/analytics-modal.css';
+@import './views/royalty-modal.css';
+@import './views/detail-panel.css';
+@import './views/inline-rename.css';
+
+/* Components */
+@import './components/status-boxes.css';
+@import './components/marketplace-paused-banner.css';
+@import './components/activity-mode-toggle.css';
+@import './components/token-selector.css';
+@import './components/action-buttons.css';
+@import './components/tabs.css';
+@import './components/properties-attributes.css';
+@import './components/history-activity.css';
+@import './components/form-elements.css';
+@import './components/duration-pills-segmented-control.css';
+
+/* Views */
+@import './views/asset-preview-in-wizards.css';
+@import './views/summary-box.css';
+@import './views/success-state.css';
+@import './views/inventory-grid.css';
+@import './views/activity-feed.css';
+
+/* Base */
+@import './base/responsive-design.css';
+@import './base/scrollbar.css';
+
+/* Components */
+@import './components/toast-notifications.css';
+@import './components/loading-spinner.css';
+@import './components/pagination.css';
+@import './components/rarity-badges-use-semantic-mp-rarity-variables.css';
+@import './components/on-sale-toggle.css';
+@import './components/rarity-filter-checkboxes.css';
+@import './components/status-filter-colors.css';
+@import './components/inventory-listing-status-filter-colors.css';
+@import './components/listing-type-filter-chips.css';
+
+/* Views */
+@import './views/bundle-detail-panel.css';
+@import './views/bids-list-in-detail.css';
+
+/* Components */
+@import './components/sales-history-chart.css';
+
+/* Views */
+@import './views/bundle-selection-mode.css';
+@import './views/collections-grid.css';
+@import './views/view-specific-layouts.css';
+@import './views/stats-dashboard.css';
+@import './views/trending-section.css';
+@import './views/price-chart.css';
+@import './views/recent-transactions.css';
+@import './views/settings-modal.css';
+@import './views/wizard-form-enhancements.css';
+
+/* Components */
+@import './components/empty-states.css';
+
+/* Views */
+@import './views/opensea-style-table-view.css';
+@import './views/inventory-table-responsive.css';
+@import './views/offers-table-view.css';
+
+/* Base */
+@import './base/utility-classes.css';

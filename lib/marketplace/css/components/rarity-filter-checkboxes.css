@@ -1,0 +1,43 @@
+/* ========== Rarity Filter Checkboxes ========== */
+    .mp-rarity-filters {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px 0;
+    }
+
+    .mp-rarity-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 6px 0;
+    }
+
+    .mp-rarity-checkbox {
+      width: 18px;
+      height: 18px;
+      border-radius: var(--mp-radius-pill);
+      border: 2px solid var(--mp-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: transparent;
+      transition: all 0.15s;
+    }
+
+    .mp-rarity-item.selected .mp-rarity-checkbox {
+      border-color: currentColor;
+      color: #fff;
+    }
+
+    .mp-rarity-item[data-rarity="common"] .mp-rarity-checkbox { background: var(--mp-rarity-common); border-color: var(--mp-rarity-common); }
+    .mp-rarity-item[data-rarity="uncommon"] .mp-rarity-checkbox { background: var(--mp-rarity-uncommon); border-color: var(--mp-rarity-uncommon); }
+    .mp-rarity-item[data-rarity="rare"] .mp-rarity-checkbox { background: var(--mp-rarity-rare); border-color: var(--mp-rarity-rare); }
+    .mp-rarity-item[data-rarity="epic"] .mp-rarity-checkbox { background: var(--mp-rarity-epic); border-color: var(--mp-rarity-epic); }
+    .mp-rarity-item[data-rarity="legendary"] .mp-rarity-checkbox { background: var(--mp-rarity-legendary); border-color: var(--mp-rarity-legendary); }
+    .mp-rarity-item[data-rarity="mythic"] .mp-rarity-checkbox { background: var(--mp-rarity-mythic); border-color: var(--mp-rarity-mythic); }
+
+    .mp-rarity-label { font-size: 13px; color: var(--mp-text); }
+    .mp-rarity-count { font-size: 12px; color: var(--mp-text-muted); margin-left: auto; }

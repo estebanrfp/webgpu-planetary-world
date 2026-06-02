@@ -1,0 +1,365 @@
+/* ========== Sidebar (Filters) ========== */
+    .mp-sidebar {
+      grid-area: sidebar;
+      background: rgba(21, 21, 32, 0.5);
+      border-right: 1px solid var(--mp-border);
+      padding: 20px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      /* Hide scrollbar but keep scroll functionality */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+    .mp-sidebar::-webkit-scrollbar {
+      display: none; /* Chrome/Safari/Edge */
+    }
+
+    .mp-sidebar * {
+      max-width: 100%;
+      word-wrap: break-word;
+    }
+
+    .mp-sidebar-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+    }
+
+    /* Mobile Navigation in Sidebar (hidden on desktop) */
+    .mp-sidebar-mobile-nav {
+      display: none;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--mp-border);
+    }
+
+    .mp-nav-option {
+      cursor: pointer;
+    }
+
+    .mp-nav-option.selected {
+      background: rgba(var(--mp-accent-rgb), 0.1);
+      color: var(--mp-accent);
+    }
+
+    .mp-nav-icon {
+      font-size: 16px;
+      margin-right: 8px;
+    }
+
+    /* Network Toggle */
+    .mp-network-toggle {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Network Segmented Pills */
+    .mp-pills {
+      display: flex;
+      gap: 0;
+      background: var(--mp-bg-input);
+      border-radius: 8px;
+      padding: 4px;
+      border: 1px solid var(--mp-border);
+    }
+
+    .mp-pills .mp-pill {
+      flex: 1;
+      padding: 10px 16px;
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mp-text-dim);
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: center;
+    }
+
+    .mp-pills .mp-pill:hover {
+      background: var(--mp-bg-hover);
+      color: var(--mp-text);
+    }
+
+    .mp-pills .mp-pill.mp-pill-active {
+      background: rgba(74, 222, 128, 0.15);
+      color: var(--mp-success);
+    }
+
+    .mp-pills .mp-pill.mp-pill-warning {
+      background: rgba(217, 119, 6, 0.2);
+      color: var(--mp-warning);
+      animation: pulse-warning 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse-warning {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    /* Deprecated: mp-network-btn (replaced by mp-pills) */
+    .mp-network-btn {
+      flex: 1;
+      padding: 8px 10px;
+      background: var(--mp-bg-input);
+      border: 1px solid var(--mp-border);
+      border-radius: 6px;
+      color: var(--mp-text-muted);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mp-network-btn:hover {
+      background: var(--mp-bg-hover);
+      color: var(--mp-text);
+    }
+
+    .mp-network-btn-active {
+      background: rgba(74, 222, 128, 0.15);
+      border-color: rgba(74, 222, 128, 0.4);
+      color: var(--mp-success);
+    }
+
+    .mp-filter-group {
+      border-bottom: 1px solid var(--mp-border);
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+
+    .mp-filter-group:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .mp-filter-section {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+    }
+
+    .mp-filter-section:not(:last-child) {
+      border-bottom: 1px solid var(--mp-border);
+    }
+
+    .mp-filter-section:last-child { margin-bottom: 0; padding-bottom: 0; }
+
+    .mp-filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .mp-filter-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mp-text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .mp-filter-toggle { color: var(--mp-text-muted); font-size: 12px; transition: transform 0.2s; }
+    .mp-filter-header { cursor: pointer; }
+    .mp-filter-header:hover .mp-filter-toggle { color: var(--mp-text); }
+    .mp-filter-section.collapsed .mp-filter-toggle { transform: rotate(-90deg); }
+    .mp-filter-section.collapsed .mp-filter-options,
+    .mp-filter-section.collapsed .mp-filter-pills,
+    .mp-filter-section.collapsed .mp-rarity-filters,
+    .mp-filter-section.collapsed .mp-price-inputs { display: none; }
+
+    /* Filter Pills (tab-style labels) */
+    .mp-filter-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 0;
+    }
+
+    .mp-filter-pill {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: transparent;
+      border: none;
+      border-radius: var(--mp-radius-pill);
+      color: var(--mp-text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: left;
+    }
+
+    .mp-filter-pill:hover {
+      color: var(--mp-text);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .mp-filter-pill.active {
+      background: #ffffff05;
+      color: var(--mp-badge-text);
+      border-left: 4px solid var(--mp-accent);
+      padding-left: 12px;
+    }
+
+    /* Pill count badge */
+    .mp-pill-count {
+      font-size: 11px;
+      color: var(--mp-text-dim);
+      font-weight: 400;
+    }
+
+    .mp-filter-pill.active .mp-pill-count {
+      color: var(--mp-text-muted);
+    }
+
+    /* Colored border for listing status pills (inventory) - using semantic variables */
+    .mp-filter-pill[data-inventory-status="unlisted"].active { border-left-color: var(--mp-rarity-common); }
+    .mp-filter-pill[data-inventory-status="sale"].active { border-left-color: var(--mp-type-sale); }
+    .mp-filter-pill[data-inventory-status="rent"].active { border-left-color: var(--mp-type-rent); }
+    .mp-filter-pill[data-inventory-status="auction"].active { border-left-color: var(--mp-type-auction); }
+    .mp-filter-pill[data-inventory-status="bundle"].active { border-left-color: var(--mp-type-bundle); }
+
+    /* Colored border for rarity pills - using semantic variables */
+    .mp-filter-pill[data-rarity="common"].active { border-left-color: var(--mp-rarity-common); }
+    .mp-filter-pill[data-rarity="uncommon"].active { border-left-color: var(--mp-rarity-uncommon); }
+    .mp-filter-pill[data-rarity="rare"].active { border-left-color: var(--mp-rarity-rare); }
+    .mp-filter-pill[data-rarity="epic"].active { border-left-color: var(--mp-rarity-epic); }
+    .mp-filter-pill[data-rarity="legendary"].active { border-left-color: var(--mp-rarity-legendary); }
+    .mp-filter-pill[data-rarity="mythic"].active { border-left-color: var(--mp-rarity-mythic); }
+
+    /* Colored border for status/type pills - using semantic variables */
+    .mp-filter-pill[data-type="sale"].active { border-left-color: var(--mp-type-sale); }
+    .mp-filter-pill[data-type="rent"].active { border-left-color: var(--mp-type-rent); }
+    .mp-filter-pill[data-type="auction"].active { border-left-color: var(--mp-type-auction); }
+    .mp-filter-pill[data-type="bundle"].active { border-left-color: var(--mp-type-bundle); }
+
+    /* Colored border for explore category pills - using semantic variables */
+    .mp-filter-pill[data-category="favorites"].active { border-left-color: var(--mp-danger); }
+    .mp-filter-pill[data-category="land"].active { border-left-color: var(--mp-category-land); }
+    .mp-filter-pill[data-category="wearables"].active { border-left-color: var(--mp-category-wearable); }
+    .mp-filter-pill[data-category="objects"].active { border-left-color: var(--mp-category-building); }
+    .mp-filter-pill[data-category="collections"].active { border-left-color: var(--mp-category-emote); }
+
+    /* Colored border for inventory category pills - using semantic variables */
+    .mp-filter-pill[data-inventory-category="land"].active { border-left-color: var(--mp-category-land); }
+    .mp-filter-pill[data-inventory-category="wearables"].active { border-left-color: var(--mp-category-wearable); }
+    .mp-filter-pill[data-inventory-category="objects"].active { border-left-color: var(--mp-category-building); }
+    .mp-filter-pill[data-inventory-category="collections"].active { border-left-color: var(--mp-category-emote); }
+
+    /* Colored border for inventory rarity pills - using semantic variables */
+    .mp-filter-pill[data-inventory-rarity="common"].active { border-left-color: var(--mp-rarity-common); }
+    .mp-filter-pill[data-inventory-rarity="uncommon"].active { border-left-color: var(--mp-rarity-uncommon); }
+    .mp-filter-pill[data-inventory-rarity="rare"].active { border-left-color: var(--mp-rarity-rare); }
+    .mp-filter-pill[data-inventory-rarity="epic"].active { border-left-color: var(--mp-rarity-epic); }
+    .mp-filter-pill[data-inventory-rarity="legendary"].active { border-left-color: var(--mp-rarity-legendary); }
+    .mp-filter-pill[data-inventory-rarity="mythic"].active { border-left-color: var(--mp-rarity-mythic); }
+
+    /* Colored border for offers direction pills */
+    .mp-filter-pill[data-offer-direction="received"].active { border-left-color: var(--mp-success); }
+    .mp-filter-pill[data-offer-direction="sent"].active { border-left-color: var(--mp-accent); }
+
+    /* Colored border for offers status pills */
+    .mp-filter-pill[data-offer-status="pending"].active { border-left-color: var(--mp-warning); }
+    .mp-filter-pill[data-offer-status="accepted"].active { border-left-color: var(--mp-success); }
+    .mp-filter-pill[data-offer-status="expired"].active { border-left-color: var(--mp-common); }
+
+    .mp-filter-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px 0;
+    }
+
+    .mp-filter-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mp-filter-option:hover .mp-filter-checkbox {
+      border-color: var(--mp-accent);
+    }
+
+    .mp-filter-checkbox {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--mp-border);
+      border-radius: var(--mp-radius-pill);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      font-size: 12px;
+      transition: all 0.15s;
+    }
+
+    .mp-filter-option.selected .mp-filter-checkbox {
+      background: var(--mp-accent);
+      border-color: var(--mp-accent);
+      color: #fff;
+    }
+
+    /* Favorites filter heart */
+    .mp-filter-heart {
+      background: transparent;
+      border-color: var(--mp-danger);
+      color: var(--mp-danger);
+    }
+
+    .mp-filter-option[data-category="favorites"].selected .mp-filter-heart,
+    .mp-filter-option[data-category="favorites"]:hover .mp-filter-heart {
+      background: var(--mp-danger);
+      color: #fff;
+    }
+
+    /* Favorite button in cards */
+    .mp-favorite-btn {
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: var(--mp-text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mp-favorite-btn:hover {
+      color: var(--mp-danger);
+      transform: scale(1.1);
+    }
+
+    .mp-favorite-btn.active {
+      color: var(--mp-danger);
+    }
+
+    .mp-filter-label { font-size: 13px; color: var(--mp-text); }
+    .mp-filter-count { font-size: 12px; color: var(--mp-text-muted); margin-left: auto; }
+
+    .mp-price-range {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .mp-input {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--mp-bg-input);
+      border: 1px solid var(--mp-border);
+      border-radius: 8px;
+      color: var(--mp-text);
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .mp-input:focus {
+      border-color: var(--mp-accent);
+      box-shadow: 0 0 0 3px var(--mp-glow);
+    }
+
+    .mp-input::placeholder { color: var(--mp-text-dim); }
+
+    .mp-price-separator { color: var(--mp-text-muted); }

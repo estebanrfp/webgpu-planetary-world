@@ -1,0 +1,49 @@
+{
+  "network": "polygonAmoy",
+  "chainId": "80002",
+  "deployer": "0xE5639DfE345F8ab845bEBE63a1C7322F9c6fF5c7",
+  "type": "upgradeable",
+  "contracts": {
+    "OVGForwarder": {
+      "address": "0x82a72519A568297DB47ce69516524b33d5840cD6",
+      "upgradeable": false
+    },
+    "OVGPaymaster": {
+      "proxy": "0x3060C0EA9039Cd637d3646f7c593DE0169646c7a",
+      "implementation": "0xeed820b4B2f67B10d7231f6F564220594e6B5587",
+      "upgradeable": true
+    },
+    "OVGToken": {
+      "proxy": "0x564f99BAD84cE3fD36D5597874633eddBB304b8f",
+      "implementation": "0xA4E2251fA0c4152Aa3fe51C5eEc21398f4bF52B3",
+      "upgradeable": true
+    },
+    "OVGAssets": {
+      "proxy": "0xD55d5049e597BA431d5C2b5c1f286532f0E0C195",
+      "implementation": "0xFD9f6337DB89F7BDe6532bD8883738b5f29768a7",
+      "upgradeable": true
+    },
+    "OVGMarketplace": {
+      "proxy": "0x9982f5e65A342D7b8CAd1Ab3C83585916D98542a",
+      "implementation": "0x1d197d9C880e016Ec4f56b9BDF7e47e8B723B24e",
+      "upgradeable": true,
+      "previousImplementations": [
+        {
+          "address": "0xE39EF87A233161b948469B7143f0B7F998EEd465",
+          "upgradedAt": "2026-01-22T13:49:24.445Z"
+        },
+        {
+          "address": "0xE39EF87A233161b948469B7143f0B7F998EEd465",
+          "upgradedAt": "2026-01-22T13:49:53.404Z"
+        }
+      ]
+    },
+    "OVGLandClaim": {
+      "proxy": "0x0feE250B12c8044fAE839D8F8fd056b46C82dAD0",
+      "implementation": "0xd480828873862d13002Fd8bD71132b5e67FABD6E",
+      "upgradeable": true
+    }
+  },
+  "timestamp": "2026-01-22T10:19:28.617Z",
+  "lastUpdated": "2026-01-22T13:49:53.404Z"
+}

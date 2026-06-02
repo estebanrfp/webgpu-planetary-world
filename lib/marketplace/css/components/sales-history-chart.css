@@ -1,0 +1,19 @@
+/* ========== Sales History Chart ========== */
+    .mp-sales-chart {
+      height: 120px;
+      background: var(--mp-bg-card);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .mp-chart-bar {
+      flex: 1;
+      background: linear-gradient(to top, var(--mp-accent), rgba(var(--mp-accent-rgb), 0.3));
+      border-radius: 4px 4px 0 0;
+      min-height: 10px;
+      transition: height 0.3s;
+    }

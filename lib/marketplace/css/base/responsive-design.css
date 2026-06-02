@@ -1,0 +1,165 @@
+/* ========== Responsive Design ========== */
+    @media (max-width: 1024px) {
+      .marketplace-app {
+        grid-template-columns: 220px 1fr;
+      }
+      .mp-sidebar { width: 220px; }
+      /* Stats responsive */
+      .mp-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .mp-chart-container canvas { height: 180px; }
+    }
+
+    @media (max-width: 768px) {
+      .marketplace-app {
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        grid-template-columns: 1fr;
+        grid-template-rows: var(--header-height) var(--subheader-height) 1fr;
+        grid-template-areas:
+          "header"
+          "subheader"
+          "main";
+      }
+      .mp-sidebar {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        bottom: 0;
+        width: var(--sidebar-width);
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+      }
+      .mp-sidebar.open {
+        transform: translateX(0);
+      }
+      .mp-sidebar-mobile-nav {
+        display: block;
+      }
+      .mp-subheader {
+        padding: 0 12px;
+        gap: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .mp-subheader::-webkit-scrollbar { display: none; }
+      .mp-subheader-left { flex-shrink: 0; }
+      .mp-subheader-chip { padding: 4px 10px; font-size: 11px; }
+      .mp-subheader-select { padding: 4px 8px; font-size: 11px; }
+      .mp-subheader-divider { display: none; }
+      .mp-subheader-land-info { display: none; }
+      .mp-subheader-right { display: none; }
+      .mp-subheader-label { font-size: 11px; }
+      .mp-header { padding: 0 16px; }
+      .mp-header-left { gap: 8px; }
+      .mp-search { display: none; }
+      .mp-nav-tabs { display: none; }
+      .mp-grid-container { padding: 12px; }
+      /* Mobile grid - keep compact mosaic, just reduce minmax */
+      .mp-card-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+      .mp-card-grid .mp-card-content { padding: 8px 10px; }
+      .mp-card-grid .mp-card-title { font-size: 12px; margin-bottom: 6px; }
+      .mp-card-grid .mp-card-collection { font-size: 10px; }
+      .mp-card-grid .mp-price-value { font-size: 13px; }
+      .mp-card-grid .mp-price-usd { font-size: 9px; }
+      .mp-card-grid .mp-card-btn { padding: 5px 10px; font-size: 11px; }
+      /* Mobile batch checkbox */
+      .mp-batch-checkbox {
+        top: 6px !important;
+        left: 6px !important;
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 12px !important;
+      }
+      .mp-inventory-supply-badge {
+        bottom: 6px !important;
+        left: 6px !important;
+        padding: 2px 5px !important;
+        font-size: 10px !important;
+      }
+      .mp-detail-modal { max-width: 100%; margin: 0 16px; border-radius: 12px; max-height: 90vh; }
+      .mp-modal, .mp-modal-lg, .mp-modal-xl, .mp-modal-settings { max-width: calc(100% - 32px); margin: 16px; border-radius: 12px; max-height: 85vh; }
+      .mp-properties { grid-template-columns: repeat(2, 1fr); }
+      /* Settings responsive */
+      .mp-settings-group { padding: 8px 16px 12px; }
+      .mp-settings-row { flex-wrap: wrap; gap: 12px; }
+      .mp-settings-control { margin-left: 0; width: 100%; justify-content: flex-end; }
+      .mp-wallet-info { flex-wrap: wrap; }
+      .mp-wallet-actions { width: 100%; justify-content: flex-end; margin-top: 8px; }
+      /* Stats responsive */
+      .mp-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .mp-stat-card { padding: 16px; }
+      .mp-stat-icon { font-size: 24px; }
+      .mp-stat-value { font-size: 20px; }
+      .mp-chart-section { padding: 16px; }
+      .mp-chart-container canvas { height: 160px; }
+      .mp-recent-tx-list { gap: 10px; }
+      /* Mobile menu - use sidebar as drawer instead */
+      .mp-menu-toggle { display: flex; }
+      .mp-mobile-menu { display: none !important; }
+      .mp-mobile-overlay { display: block; }
+      /* Pagination responsive */
+      .mp-pagination {
+        bottom: 0;
+        padding: 6px 8px;
+        gap: 2px;
+        border-radius: 12px 12px 0 0;
+      }
+      .mp-pagination-btn {
+        min-width: 32px;
+        height: 32px;
+        padding: 0 8px;
+        font-size: 13px;
+        border-radius: 6px;
+      }
+      .mp-pagination-info { display: none; }
+      .mp-pagination-numbers { gap: 2px; }
+    }
+
+    @media (max-width: 480px) {
+      /* Keep compact mosaic on very small screens */
+      .mp-card-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .mp-card-grid .mp-card-content { padding: 6px 8px; }
+      .mp-card-grid .mp-card-title { font-size: 11px; margin-bottom: 4px; }
+      .mp-card-grid .mp-card-collection { font-size: 9px; }
+      .mp-card-grid .mp-price-value { font-size: 12px; }
+      .mp-card-grid .mp-price-usd { display: none; }
+      .mp-card-grid .mp-card-btn { padding: 4px 8px; font-size: 10px; }
+      .mp-card-grid .mp-badge { font-size: 8px; padding: 2px 4px; }
+      /* Pagination responsive small */
+      .mp-pagination {
+        bottom: 8px;
+        padding: 6px 10px;
+        gap: 3px;
+        border-radius: 10px;
+      }
+      .mp-pagination-btn {
+        min-width: 28px;
+        height: 28px;
+        padding: 0 6px;
+        font-size: 12px;
+        border-radius: 5px;
+      }
+      .mp-pagination-numbers { display: none; }
+      .mp-card-grid.list-view .mp-card { grid-template-columns: 70px 1fr; }
+      .mp-card-grid.list-view .mp-card-image { width: 70px; height: 70px; }
+      .mp-card-grid.list-view .mp-list-meta { flex-wrap: wrap; gap: 8px; }
+      .mp-action-grid { grid-template-columns: 1fr; }
+      .mp-action-buy { grid-column: span 1; }
+      /* Settings responsive small */
+      .mp-settings-select { min-width: 100%; }
+      .mp-wallet-avatar { width: 40px; height: 40px; font-size: 18px; }
+      /* Stats responsive small */
+      .mp-stats-grid { grid-template-columns: 1fr; gap: 10px; }
+      .mp-stat-card { padding: 14px; }
+      .mp-stat-icon { font-size: 22px; }
+      .mp-stat-value { font-size: 18px; }
+      .mp-stat-label { font-size: 12px; }
+      .mp-chart-header { flex-direction: column; gap: 8px; align-items: flex-start; }
+      .mp-floor-prices { flex-wrap: wrap; gap: 8px; }
+    }

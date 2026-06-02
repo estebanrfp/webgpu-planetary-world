@@ -1,0 +1,61 @@
+/* ========== Loading Spinner ========== */
+    .mp-spinner-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mp-spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid var(--mp-border);
+      border-top-color: var(--mp-accent);
+      border-radius: 50%;
+      animation: mp-spin 0.8s linear infinite;
+    }
+
+    .mp-spinner-sm { width: 24px; height: 24px; border-width: 2px; }
+    .mp-spinner-lg { width: 64px; height: 64px; border-width: 4px; }
+
+    @keyframes mp-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .mp-spinner-text {
+      font-size: 14px;
+      color: var(--mp-text-muted);
+    }
+
+    /* Empty State */
+    .mp-empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px;
+      color: var(--mp-text-muted);
+    }
+
+    /* Global Loading Overlay */
+    .mp-loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+    }
+
+    .mp-loading-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }

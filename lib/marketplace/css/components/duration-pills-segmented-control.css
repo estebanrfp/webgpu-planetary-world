@@ -1,0 +1,110 @@
+/* ========== Duration Pills (Segmented Control) ========== */
+    .mp-duration-pills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .mp-duration-pills-5 {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+
+    .mp-duration-pills-5 .mp-duration-pill {
+      padding: 12px 4px;
+    }
+
+    .mp-duration-pills-5 .mp-pill-days {
+      font-size: 12px;
+    }
+
+    .mp-duration-pill {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 14px 8px;
+      background: var(--mp-bg-tertiary);
+      border: 1px solid var(--mp-border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mp-duration-pill:hover {
+      background: var(--mp-bg-card);
+      border-color: var(--mp-border-light);
+      transform: translateY(-2px);
+    }
+
+    .mp-duration-pill.active {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.15));
+      border-color: var(--mp-accent);
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .mp-duration-pill.active::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: var(--mp-radius-lg);
+      padding: 1px;
+      background: linear-gradient(135deg, var(--mp-accent), var(--mp-info));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .mp-pill-days {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-text);
+    }
+
+    .mp-duration-pill.active .mp-pill-days {
+      color: #fff;
+    }
+
+    .mp-pill-price {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-duration-pill.active .mp-pill-price {
+      color: var(--mp-success);
+    }
+
+    .mp-pill-badge {
+      position: absolute;
+      top: -8px;
+      right: -4px;
+      padding: 2px 6px;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: var(--mp-radius-pill);
+      letter-spacing: 0.5px;
+    }
+
+    .mp-pill-badge.popular {
+      background: var(--mp-accent);
+      color: white;
+    }
+
+    .mp-pill-badge.discount {
+      background: var(--mp-success);
+      color: var(--mp-bg);
+    }
+
+    @media (max-width: 480px) {
+      .mp-duration-pills {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .mp-duration-pills-5 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }

@@ -1,0 +1,12 @@
+/* ========== Header ========== */
+    .mp-header {
+      grid-area: header;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      gap: 16px;
+      background: rgba(21, 21, 32, 0.5);
+      border-bottom: 1px solid var(--mp-border);
+      z-index: 100;
+    }

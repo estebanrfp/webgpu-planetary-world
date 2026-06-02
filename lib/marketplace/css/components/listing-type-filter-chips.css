@@ -1,0 +1,19 @@
+/* ========== Listing Type Filter Chips ========== */
+    .mp-filter-chip-group { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 0; }
+    .mp-filter-chip {
+      padding: 6px 12px;
+      background: var(--mp-bg-input);
+      border: 1px solid var(--mp-border);
+      border-radius: 16px;
+      color: var(--mp-text-muted);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .mp-filter-chip:hover { border-color: var(--mp-accent); color: var(--mp-text); }
+    .mp-filter-chip.active { background: rgba(var(--mp-accent-rgb), 0.2); border-color: var(--mp-accent); color: var(--mp-accent); }
+    .mp-filter-chip[data-listing-type="rent"].active { background: rgba(var(--mp-rent-rgb), 0.2); border-color: var(--mp-rent); color: var(--mp-rent); }
+    .mp-filter-chip[data-listing-type="auction"].active { background: rgba(var(--mp-warning-rgb), 0.2); border-color: var(--mp-warning); color: var(--mp-warning); }
+    .mp-filter-chip[data-listing-type="bundle"].active { background: rgba(var(--mp-purple-rgb), 0.2); border-color: var(--mp-purple); color: var(--mp-purple); }

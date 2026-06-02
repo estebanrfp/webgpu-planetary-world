@@ -1,0 +1,74 @@
+/* ========== Bundle Selection Mode ========== */
+    .mp-card-selectable {
+      position: relative;
+    }
+
+    .mp-card-selectable::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 24px;
+      height: 24px;
+      background: var(--mp-bg-card);
+      border: 2px solid var(--mp-border);
+      border-radius: 6px;
+      z-index: 10;
+      transition: all 0.15s;
+    }
+
+    .mp-card-selectable.selected::before {
+      background: var(--mp-accent);
+      border-color: var(--mp-accent);
+    }
+
+    .mp-card-selectable.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 10px;
+      left: 13px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      z-index: 11;
+    }
+
+    .mp-selection-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 24px;
+      background: var(--mp-bg-modal);
+      border-top: 1px solid var(--mp-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mp-selection-bar.visible {
+      transform: translateY(0);
+    }
+
+    .mp-selection-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mp-selection-count {
+      font-size: 15px;
+      color: var(--mp-text-white);
+    }
+
+    .mp-selection-count strong {
+      color: var(--mp-accent);
+    }
+
+    .mp-selection-actions {
+      display: flex;
+      gap: 12px;
+    }

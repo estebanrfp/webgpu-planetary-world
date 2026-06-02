@@ -1,0 +1,33 @@
+/* ========== Summary Box ========== */
+    .mp-summary {
+      background: var(--mp-bg-card);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .mp-summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--mp-border-light);
+    }
+
+    .mp-summary-row:last-child { border-bottom: none; }
+
+    .mp-summary-label {
+      color: var(--mp-text-muted);
+      font-size: 14px;
+    }
+
+    .mp-summary-value {
+      color: var(--mp-text-white);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .mp-summary-total {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--mp-success);
+    }

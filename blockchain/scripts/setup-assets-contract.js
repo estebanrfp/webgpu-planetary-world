@@ -1,0 +1,40 @@
+const hre = require("hardhat");
+
+async function main() {
+  const deployment = require("../deployments/polygonAmoy-upgradeable.json");
+  
+  const metadataProxy = deployment.contracts.OVGMetadata.proxy;
+  const assetsProxy = deployment.contracts.OVGAssets.proxy;
+  
+  console.log("Metadata proxy:", metadataProxy);
+  console.log("Assets proxy:", assetsProxy);
+  
+  const metadata = await hre.ethers.getContractAt("OVGMetadataUpgradeable", metadataProxy);
+  
+  // Check current value
+  console.log("\nChecking current assetsContract...");
+  const current = await metadata.assetsContract();
+  console.log("Current assetsContract:", current);
+  
+  if (current === "0x0000000000000000000000000000000000000000") {
+    console.log("\n❌ assetsContract is NOT configured!");
+    console.log("Setting assetsContract to:", assetsProxy);
+    
+    const tx = await metadata.setAssetsContract(assetsProxy);
+    console.log("Transaction:", tx.hash);
+    await tx.wait();
+    
+    console.log("✅ assetsContract configured successfully!");
+    
+    // Verify
+    const updated = await metadata.assetsContract();
+    console.log("Verified assetsContract:", updated);
+  } else if (current.toLowerCase() === assetsProxy.toLowerCase()) {
+    console.log("\n✅ assetsContract is already correctly configured");
+  } else {
+    console.log("\n⚠️ assetsContract is set to a different address:", current);
+    console.log("Expected:", assetsProxy);
+  }
+}
+
+main().catch(console.error);

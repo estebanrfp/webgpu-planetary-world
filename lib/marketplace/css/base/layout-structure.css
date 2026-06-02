@@ -1,0 +1,18 @@
+/* ========== Layout Structure ========== */
+    .marketplace-app {
+      position: relative;
+      display: grid;
+      grid-template-rows: var(--header-height) var(--subheader-height) 1fr;
+      grid-template-columns: var(--sidebar-width) 1fr;
+      grid-template-areas:
+        "header header"
+        "sidebar subheader"
+        "sidebar main";
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: rgba(13, 13, 18, 0.5);
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }

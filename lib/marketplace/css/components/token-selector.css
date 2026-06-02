@@ -1,0 +1,112 @@
+/* ========== Token Selector ========== */
+    .mp-token-selector {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Single token display (OVG only mode) */
+    .mp-token-display {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--mp-bg-input);
+      border: 1px solid var(--mp-border);
+      border-radius: 10px;
+    }
+
+    .mp-token-display .mp-token-icon {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(var(--mp-accent-rgb), 0.15);
+      border-radius: 50%;
+      font-size: 14px;
+      color: var(--mp-accent);
+    }
+
+    .mp-token-display .mp-token-name {
+      font-weight: 600;
+      color: var(--mp-text);
+    }
+
+    .mp-token-display .mp-token-balance {
+      margin-left: auto;
+      font-size: 13px;
+      color: var(--mp-text-muted);
+    }
+
+    /* Get OVG Link (redirect to QuickSwap) */
+    .mp-get-ovg-link {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--mp-accent);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mp-get-ovg-link:hover {
+      color: var(--mp-text);
+      text-decoration: underline;
+    }
+    .mp-status-box .mp-get-ovg-link {
+      margin-top: 4px;
+    }
+
+    .mp-token-option {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 8px;
+      background: var(--mp-bg-input);
+      border: 2px solid var(--mp-border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mp-token-option:hover {
+      background: var(--mp-bg-hover);
+      border-color: var(--mp-text-muted);
+    }
+
+    .mp-token-option.active {
+      background: rgba(var(--mp-accent-rgb), 0.1);
+      border-color: var(--mp-accent);
+    }
+
+    .mp-token-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--mp-bg-card);
+      border-radius: 50%;
+      font-size: 16px;
+      color: var(--mp-text);
+    }
+
+    .mp-token-option.active .mp-token-icon {
+      background: rgba(var(--mp-accent-rgb), 0.2);
+      color: var(--mp-accent);
+    }
+
+    .mp-token-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-text);
+    }
+
+    .mp-token-balance {
+      font-size: 11px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-token-option.active .mp-token-name {
+      color: var(--mp-accent);
+    }

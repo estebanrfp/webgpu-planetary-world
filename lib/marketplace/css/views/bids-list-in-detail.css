@@ -1,0 +1,14 @@
+/* ========== Bids List in Detail ========== */
+    .mp-bids-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--mp-border-light);
+    }
+
+    .mp-bids-count {
+      background: var(--mp-accent);
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }

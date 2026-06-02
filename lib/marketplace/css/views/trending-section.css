@@ -1,0 +1,63 @@
+/* ========== Trending Section ========== */
+    .mp-trending-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mp-trending-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px;
+      background: var(--mp-bg-card);
+      border-radius: 10px;
+    }
+
+    .mp-trending-rank {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--mp-text-muted);
+      width: 24px;
+    }
+
+    .mp-trending-image {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .mp-trending-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mp-trending-info { flex: 1; }
+
+    .mp-trending-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mp-text-white);
+    }
+
+    .mp-trending-collection {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-trending-price {
+      text-align: right;
+    }
+
+    .mp-trending-price-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-success);
+    }
+
+    .mp-trending-price-change {
+      font-size: 11px;
+      color: var(--mp-text-muted);
+    }

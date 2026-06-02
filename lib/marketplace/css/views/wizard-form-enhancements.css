@@ -1,0 +1,395 @@
+/* ========== Wizard Form Enhancements ========== */
+    .mp-slider-container {
+      padding: 12px 0;
+    }
+
+    .mp-slider {
+      width: 100%;
+      height: 6px;
+      background: var(--mp-bg-card);
+      border-radius: 3px;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .mp-slider::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--mp-accent);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .mp-slider-value {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--mp-accent);
+      margin-top: 8px;
+    }
+
+    .mp-duration-options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .mp-duration-option {
+      padding: 12px;
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mp-duration-option:hover {
+      border-color: var(--mp-accent);
+    }
+
+    .mp-duration-option.selected {
+      background: rgba(var(--mp-accent-rgb), 0.1);
+      border-color: var(--mp-accent);
+    }
+
+    .mp-duration-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--mp-text-white);
+    }
+
+    .mp-duration-label {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-char-counter {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    .mp-char-counter.warning { color: var(--mp-warning); }
+    .mp-char-counter.error { color: var(--mp-danger); }
+
+    /* ========== Upload Tabs ========== */
+    .mp-upload-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .mp-upload-tab {
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mp-text-muted);
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mp-upload-tab:hover {
+      color: var(--mp-text);
+      background: var(--mp-bg-hover);
+    }
+
+    .mp-upload-tab.active {
+      color: var(--mp-text-white);
+      background: rgba(var(--mp-accent-rgb), 0.15);
+    }
+
+    .mp-upload-panel {
+      margin-top: 8px;
+    }
+
+    /* ========== File Drop Zone (Minimalist) ========== */
+    .mp-file-drop {
+      position: relative;
+      border: 1px dashed var(--mp-border);
+      border-radius: 10px;
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: transparent;
+    }
+
+    .mp-file-drop:hover {
+      border-color: var(--mp-accent);
+      background: rgba(var(--mp-accent-rgb), 0.03);
+    }
+
+    .mp-file-drop.mp-file-drop-active {
+      border-color: var(--mp-accent);
+      background: rgba(var(--mp-accent-rgb), 0.06);
+      border-style: solid;
+    }
+
+    .mp-file-drop-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mp-file-drop-icon {
+      font-size: 28px;
+      opacity: 0.6;
+      transition: opacity 0.15s;
+    }
+
+    .mp-file-drop:hover .mp-file-drop-icon {
+      opacity: 0.9;
+    }
+
+    .mp-file-drop-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-file-drop:hover .mp-file-drop-text {
+      color: var(--mp-text);
+    }
+
+    .mp-file-drop-hint {
+      font-size: 11px;
+      color: var(--mp-text-dim);
+    }
+
+    /* Smaller variant for optional asset upload */
+    .mp-file-drop.mp-file-drop-small {
+      padding: 18px 16px;
+    }
+
+    .mp-file-drop-small .mp-file-drop-icon {
+      font-size: 22px;
+    }
+
+    .mp-file-drop-small .mp-file-drop-text {
+      font-size: 12px;
+    }
+
+    /* ========== Selected File Display ========== */
+    .mp-selected-file {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: rgba(var(--mp-accent-rgb), 0.08);
+      border: 1px solid rgba(var(--mp-accent-rgb), 0.2);
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--mp-text);
+    }
+
+    .mp-file-remove {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      border-radius: 4px;
+      color: var(--mp-text-muted);
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mp-file-remove:hover {
+      color: var(--mp-danger);
+      background: rgba(var(--mp-danger-rgb), 0.1);
+    }
+
+    /* ========== Preview Remove Button ========== */
+    .mp-image-preview-container {
+      position: relative;
+    }
+
+    .mp-preview-remove {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.7);
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mp-preview-remove:hover {
+      background: var(--mp-danger);
+    }
+
+    /* ========== Form Row Layout ========== */
+    .mp-form-row {
+      display: flex;
+      gap: 16px;
+    }
+
+    .mp-form-half,
+    .mp-form-group-half {
+      flex: 1;
+    }
+
+    /* ========== Rarity Pills (Segmented Control) ========== */
+    .mp-rarity-pills {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 6px;
+    }
+
+    .mp-rarity-pill {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 6px;
+      background: var(--mp-bg-tertiary);
+      border: 1px solid var(--mp-border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--mp-text-muted);
+      text-transform: capitalize;
+    }
+
+    .mp-rarity-pill:hover {
+      background: var(--mp-bg-card);
+      border-color: var(--mp-border-light);
+      transform: translateY(-1px);
+    }
+
+    .mp-rarity-pill.active {
+      color: #fff;
+      box-shadow: 0 0 12px rgba(var(--mp-accent-rgb), 0.3);
+    }
+
+    /* Rarity-specific colors using ovgrid-ui semantic variables */
+    .mp-rarity-pill[data-rarity="Common"].active {
+      background: rgba(var(--mp-common-rgb), 0.8);
+      border-color: var(--mp-common);
+      box-shadow: 0 0 12px rgba(var(--mp-common-rgb), 0.3);
+    }
+
+    .mp-rarity-pill[data-rarity="Uncommon"].active {
+      background: rgba(var(--mp-success-rgb), 0.8);
+      border-color: var(--mp-success);
+      box-shadow: 0 0 12px rgba(var(--mp-success-rgb), 0.3);
+    }
+
+    .mp-rarity-pill[data-rarity="Rare"].active {
+      background: rgba(var(--mp-accent-rgb), 0.8);
+      border-color: var(--mp-accent);
+      box-shadow: 0 0 12px rgba(var(--mp-accent-rgb), 0.3);
+    }
+
+    .mp-rarity-pill[data-rarity="Epic"].active {
+      background: rgba(var(--mp-purple-rgb), 0.8);
+      border-color: var(--mp-purple);
+      box-shadow: 0 0 12px rgba(var(--mp-purple-rgb), 0.3);
+    }
+
+    .mp-rarity-pill[data-rarity="Legendary"].active {
+      background: rgba(var(--mp-warning-rgb), 0.8);
+      border-color: var(--mp-warning);
+      color: #000;
+      box-shadow: 0 0 12px rgba(var(--mp-warning-rgb), 0.3);
+    }
+
+    .mp-rarity-pill[data-rarity="Mythic"].active {
+      background: rgba(var(--mp-danger-rgb), 0.8);
+      border-color: var(--mp-danger);
+      box-shadow: 0 0 12px rgba(var(--mp-danger-rgb), 0.3);
+    }
+
+    /* ========== Category Pills (Segmented Control) ========== */
+    .mp-category-pills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .mp-category-pill {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 6px;
+      background: var(--mp-bg-tertiary);
+      border: 1px solid var(--mp-border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--mp-text-muted);
+      text-transform: capitalize;
+    }
+
+    .mp-category-pill:hover {
+      background: var(--mp-bg-card);
+      border-color: var(--mp-border-light);
+      transform: translateY(-1px);
+    }
+
+    .mp-category-pill.active {
+      color: #fff;
+      box-shadow: 0 0 12px rgba(var(--mp-accent-rgb), 0.3);
+    }
+
+    /* Category-specific colors using ovgrid-ui semantic variables */
+    .mp-category-pill[data-category="Objects"].active {
+      background: rgba(var(--mp-accent-rgb), 0.8);
+      border-color: var(--mp-accent);
+      box-shadow: 0 0 12px rgba(var(--mp-accent-rgb), 0.3);
+    }
+
+    .mp-category-pill[data-category="Wearables"].active {
+      background: rgba(var(--mp-purple-rgb), 0.8);
+      border-color: var(--mp-purple);
+      box-shadow: 0 0 12px rgba(var(--mp-purple-rgb), 0.3);
+    }
+
+    .mp-category-pill[data-category="Land"].active {
+      background: rgba(var(--mp-success-rgb), 0.8);
+      border-color: var(--mp-success);
+      box-shadow: 0 0 12px rgba(var(--mp-success-rgb), 0.3);
+    }
+
+    .mp-category-pill[data-category="Collections"].active {
+      background: rgba(var(--mp-warning-rgb), 0.8);
+      border-color: var(--mp-warning);
+      color: #000;
+      box-shadow: 0 0 12px rgba(var(--mp-warning-rgb), 0.3);
+    }
+
+    @media (max-width: 480px) {
+      .mp-rarity-pills {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .mp-category-pills {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .mp-form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }

@@ -1,0 +1,35 @@
+/* ========== Properties / Attributes ========== */
+    .mp-properties {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .mp-property {
+      padding: 12px;
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .mp-property-type {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--mp-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .mp-property-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mp-text-white);
+    }
+
+    .mp-property-rarity {
+      font-size: 10px;
+      color: var(--mp-text-muted);
+      margin-top: 2px;
+    }

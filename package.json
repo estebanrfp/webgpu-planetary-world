@@ -1,0 +1,28 @@
+{
+  "name": "ovgrid",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "OVGrid — Open Virtual Grid: an open, serverless P2P virtual world (WebGPU + GenosDB + Polygon) that showcases GenosDB powering the live state of a 3-D world.",
+  "author": "Esteban Fuster Pozzi (@estebanrfp)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx live-server --port=3000 --no-browser",
+    "build": "bun build ./mainPlanet.js --outdir=./dist --target browser --splitting --minify --sourcemap=external --public-path ./ && cp index.html styles.css dist/ && cp -r assets dist/ && bun scripts/prune-dist-assets.js && bun scripts/fix-imports.js && cp -r lib dist/",
+    "preview": "bunx serve ./dist -p 3000",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "test:coverage": "bun test --coverage"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "4.3.0",
+    "@gltf-transform/extensions": "4.3.0",
+    "@gltf-transform/functions": "4.3.0",
+    "@napi-rs/canvas": "0.1.91",
+    "@types/bun": "latest",
+    "happy-dom": "20.3.7"
+  },
+  "dependencies": {
+    "@tonaljs/chord": "6.1.1",
+    "@tonaljs/chord-detect": "4.9.1"
+  }
+}

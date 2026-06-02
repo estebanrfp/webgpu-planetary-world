@@ -1,0 +1,84 @@
+/* ========== Action Buttons ========== */
+    .mp-action-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .mp-action-btn {
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .mp-action-buy {
+      background: rgba(var(--mp-success-rgb), 0.15);
+      border: 1px solid rgba(var(--mp-success-rgb), 0.3);
+      color: var(--mp-success);
+      grid-column: span 2;
+    }
+    .mp-action-buy:hover { background: rgba(var(--mp-success-rgb), 0.25); }
+
+    .mp-action-sell {
+      background: rgba(var(--mp-success-rgb), 0.15);
+      border: 1px solid rgba(var(--mp-success-rgb), 0.3);
+      color: var(--mp-success);
+    }
+    .mp-action-sell:hover { background: rgba(var(--mp-success-rgb), 0.25); }
+
+    .mp-action-bid {
+      background: rgba(var(--mp-warning-rgb), 0.15);
+      border: 1px solid rgba(var(--mp-warning-rgb), 0.3);
+      color: var(--mp-warning);
+    }
+    .mp-action-bid:hover { background: rgba(var(--mp-warning-rgb), 0.25); }
+
+    .mp-action-rent {
+      background: rgba(var(--mp-rent-rgb), 0.15);
+      border: 1px solid rgba(var(--mp-rent-rgb), 0.3);
+      color: var(--mp-rent);
+    }
+    .mp-action-rent:hover { background: rgba(var(--mp-rent-rgb), 0.25); }
+
+    .mp-action-gift {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--mp-text-muted);
+    }
+    .mp-action-gift:hover { background: rgba(255, 255, 255, 0.1); }
+
+    .mp-action-auction {
+      background: rgba(var(--mp-warning-rgb), 0.15);
+      border: 1px solid rgba(var(--mp-warning-rgb), 0.3);
+      color: var(--mp-warning);
+    }
+    .mp-action-auction:hover { background: rgba(var(--mp-warning-rgb), 0.25); }
+
+    .mp-action-rent-out {
+      background: rgba(var(--mp-pink-rgb), 0.15);
+      border: 1px solid rgba(var(--mp-pink-rgb), 0.3);
+      color: var(--mp-pink);
+    }
+    .mp-action-rent-out:hover { background: rgba(var(--mp-pink-rgb), 0.25); }
+
+    .mp-action-royalty {
+      background: rgba(var(--mp-accent-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-accent-rgb), 0.3);
+      color: var(--mp-accent);
+    }
+    .mp-action-royalty:hover { background: rgba(var(--mp-accent-rgb), 0.2); }
+
+    .mp-action-cancel {
+      background: rgba(var(--mp-danger-rgb), 0.1);
+      border: 1px solid rgba(var(--mp-danger-rgb), 0.3);
+      color: var(--mp-danger);
+    }
+    .mp-action-cancel:hover { background: rgba(var(--mp-danger-rgb), 0.2); }

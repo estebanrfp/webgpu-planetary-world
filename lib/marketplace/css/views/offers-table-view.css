@@ -1,0 +1,252 @@
+/* ========== Offers Table View ========== */
+    /* Offers: 8 columns: ITEM(flex) ADDRESS(110) TYPE(90) STATUS(90) PRICE(160) OFFERED(80) EXPIRES(90) ACTION(110) */
+    .mp-table-view.offers-table .mp-table-header,
+    .mp-table-view.offers-table .mp-table-row {
+      grid-template-columns: minmax(180px, 1fr) 110px 90px 90px 150px 80px 90px 110px;
+      gap: 8px;
+    }
+
+    .mp-table-view.offers-table .mp-table-row {
+      cursor: pointer;
+      padding: 10px 16px;
+    }
+
+    /* Offers table avatar - match explore expanded size */
+    .mp-table-view.offers-table .mp-table-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--mp-radius-pill);
+    }
+
+    /* Offers table item info - two lines like explore */
+    .mp-table-view.offers-table .mp-table-item-info {
+      gap: 2px;
+    }
+
+    .mp-table-view.offers-table .mp-table-item-collection {
+      display: block;
+    }
+
+    .mp-table-from-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mp-text-dim);
+      margin-right: 4px;
+    }
+
+    .mp-table-address {
+      font-size: 14px;
+      font-family: var(--mp-font-mono, monospace);
+      color: var(--mp-badge-text);
+    }
+
+    .mp-table-offer-direction {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .mp-table-offer-direction.received {
+      background: rgba(var(--mp-success-rgb), 0.15);
+      color: var(--mp-badge-text);
+    }
+
+    .mp-table-offer-direction.sent {
+      background: rgba(var(--mp-accent-rgb), 0.15);
+      color: var(--mp-badge-text);
+    }
+
+    .mp-table-offer-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-transform: capitalize;
+    }
+
+    .mp-table-offer-status.pending {
+      background: rgba(var(--mp-warning-rgb), 0.15);
+      color: var(--mp-badge-text);
+    }
+
+    .mp-table-offer-status.accepted {
+      background: rgba(var(--mp-success-rgb), 0.15);
+      color: var(--mp-badge-text);
+    }
+
+    .mp-table-offer-status.expired {
+      background: rgba(var(--mp-common-rgb), 0.15);
+      color: var(--mp-badge-text);
+    }
+
+    .mp-table-counterparty {
+      font-size: 14px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-table-counterparty strong {
+      color: var(--mp-accent);
+    }
+
+    .mp-table-actions-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    .mp-table-action-sm {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 8px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      min-width: 30px;
+      min-height: 30px;
+    }
+    .mp-table-action-sm svg {
+      display: block;
+    }
+
+    .mp-table-action-sm.accept {
+      background: rgba(var(--mp-success-rgb), 0.12);
+      color: var(--mp-success);
+    }
+
+    .mp-table-action-sm.accept:hover {
+      background: rgba(var(--mp-success-rgb), 0.2);
+    }
+
+    .mp-table-action-sm.reject {
+      background: rgba(var(--mp-danger-rgb), 0.12);
+      color: var(--mp-danger);
+    }
+
+    .mp-table-action-sm.reject:hover {
+      background: rgba(var(--mp-danger-rgb), 0.2);
+    }
+
+    .mp-table-action-sm.withdraw {
+      background: rgba(var(--mp-warning-rgb), 0.12);
+      color: var(--mp-warning);
+    }
+
+    .mp-table-action-sm.withdraw:hover {
+      background: rgba(var(--mp-warning-rgb), 0.2);
+    }
+
+    .mp-table-action-sm.loading {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .mp-table-action-sm.loading svg {
+      animation: mp-spin 0.8s linear infinite;
+    }
+
+    .mp-btn-spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid currentColor;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: mp-spin 0.8s linear infinite;
+    }
+
+    /* Offers table responsive - 8 columns: ITEM(1), ADDRESS(2), TYPE(3), STATUS(4), PRICE(5), OFFERED(6), EXPIRES(7), ACTION(8) */
+    @media (max-width: 1100px) {
+      .mp-table-view.offers-table .mp-table-header,
+      .mp-table-view.offers-table .mp-table-row {
+        grid-template-columns: minmax(160px, 1fr) 100px 80px 80px 130px 85px 100px;
+        gap: 8px;
+      }
+      /* Hide OFFERED column (6) */
+      .mp-table-view.offers-table .mp-table-header-cell:nth-child(6),
+      .mp-table-view.offers-table .mp-table-cell:nth-child(6) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .mp-table-view.offers-table .mp-table-header,
+      .mp-table-view.offers-table .mp-table-row {
+        grid-template-columns: minmax(140px, 1fr) 80px 80px 120px 85px 100px;
+        gap: 8px;
+      }
+      /* Hide ADDRESS column (2) */
+      .mp-table-view.offers-table .mp-table-header-cell:nth-child(2),
+      .mp-table-view.offers-table .mp-table-cell:nth-child(2) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .mp-table-view.offers-table .mp-table-header {
+        display: none;
+      }
+      .mp-table-view.offers-table .mp-table-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+      }
+      /* Item with avatar + info */
+      .mp-table-view.offers-table .mp-table-item {
+        flex: 1;
+        min-width: 0;
+        order: 1;
+      }
+      .mp-table-view.offers-table .mp-table-avatar {
+        width: 48px;
+        height: 48px;
+      }
+      .mp-table-view.offers-table .mp-table-item-title {
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      /* Price cell */
+      .mp-table-view.offers-table .mp-table-price-cell {
+        display: block;
+        flex-shrink: 0;
+        text-align: right;
+        order: 2;
+      }
+      .mp-table-view.offers-table .mp-table-price {
+        font-size: 14px;
+      }
+      .mp-table-view.offers-table .mp-table-price-usd {
+        font-size: 12px;
+      }
+      /* Hide other cells (FROM/TO, TYPE, TIME) */
+      .mp-table-view.offers-table .mp-table-cell {
+        display: none;
+      }
+      .mp-table-view.offers-table .mp-table-cell.mp-table-price-cell {
+        display: block;
+      }
+      /* Action cell - show buttons (call-to-action) */
+      .mp-table-view.offers-table .mp-table-row > .mp-table-cell:last-child {
+        display: flex;
+        flex-shrink: 0;
+        order: 3;
+        align-items: center;
+      }
+      .mp-table-actions-group {
+        flex-direction: row;
+        gap: 6px;
+      }
+      .mp-table-action-sm {
+        padding: 6px 10px;
+      }
+    }

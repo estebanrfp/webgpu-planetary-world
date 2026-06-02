@@ -1,0 +1,11 @@
+[build]
+  command = "bun run build"
+  publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "credentialless"
+    # Ensure WebGPU resources are handled correctly if needed
+    X-Content-Type-Options = "nosniff"

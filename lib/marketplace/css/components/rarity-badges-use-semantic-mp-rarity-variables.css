@@ -1,0 +1,7 @@
+/* ========== Rarity Badges (use semantic --mp-rarity-* variables) ========== */
+    .mp-badge-common { background: var(--mp-rarity-common); color: #fff; }
+    .mp-badge-uncommon { background: var(--mp-rarity-uncommon); color: #fff; }
+    .mp-badge-rare { background: var(--mp-rarity-rare); color: #fff; }
+    .mp-badge-epic { background: var(--mp-rarity-epic); color: #fff; }
+    .mp-badge-legendary { background: var(--mp-rarity-legendary); color: #fff; }
+    .mp-badge-mythic { background: var(--mp-rarity-mythic); color: #fff; }

@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>WebGPU Planet - Atmospheric Scattering</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OVGrid - WebGPU Precomputed Atmospheric Scattering</title>
+  <!-- Basis Universal Transcoder -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/libs/basis/basis_transcoder.js"></script>
+  <!-- Draco Mesh Decoder -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/libs/draco/draco_decoder.js"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "lib/": "./lib/",
+        "vehicle-renderer.js": "./lib/terrain/vehicle-renderer.js",
+        "EnvironmentUI.js": "./lib/ui/EnvironmentUI.js",
+        "TerrainUI.js": "./lib/ui/TerrainUI.js",
+        "AuthUI.js": "./lib/ui/AuthUI.js",
+        "ProfileUI.js": "./lib/ui/ProfileUI.js",
+        "CockpitUI.js": "./lib/ui/CockpitUI.js",
+        "InputManager.js": "./lib/ui/InputManager.js",
+        "ControlPanelUI.js": "./lib/ui/ControlPanelUI.js",
+        "UIManager.js": "./lib/ui/UIManager.js",
+        "CameraSystem.js": "./lib/core/CameraSystem.js",
+        "NavigationManager.js": "./lib/navigation/NavigationManager.js",
+        "BlockchainManager.js": "./lib/blockchain/BlockchainManager.js",
+        "RainSystem.js": "./lib/systems/RainSystem.js",
+        "PhysicsSystem.js": "./lib/systems/PhysicsSystem.js",
+        "AudioManager.js": "./lib/systems/AudioManager.js",
+        "AtmosphereSystem.js": "./lib/systems/AtmosphereSystem.js",
+        "SnowSystem.js": "./lib/systems/SnowSystem.js",
+        "CharacterSystem.js": "./lib/systems/CharacterSystem.js",
+        "VehicleSystem.js": "./lib/systems/VehicleSystem.js",
+        "NameplateSystem.js": "./lib/systems/NameplateSystem.js"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      /* Control Panel - Bottom Left (Legend) */
+      #control-panel {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(40, 40, 40, 0.65);
+        color: #e0e0e0;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        font-size: 11px;
+        padding: 12px;
+        border-radius: 8px;
+        z-index: 100;
+        width: 240px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(80, 80, 80, 0.3);
+      }
+
+      /* Debug Panel - Top Left */
+      #debug-panel {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(15, 15, 20, 0.85);
+        color: #e0e0e0;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        font-size: 11px;
+        padding: 15px;
+        border-radius: 12px;
+        z-index: 100;
+        width: 280px;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(120, 120, 150, 0.3);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      }
+      
+      #terrain-config-panel,
+      #env-config-panel,
+      .config-popup-panel {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(30, 30, 35, 0.85);
+        color: #e0e0e0;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        font-size: 11px;
+        padding: 15px;
+        border-radius: 12px;
+        z-index: 100;
+        width: 320px;
+        height: 520px;
+        max-height: 90vh;
+        overflow-y: auto;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(120, 120, 150, 0.3);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        display: none; /* Hidden by default */
+      }
+
+      /* Terrain Editor: landscape layout (3-column grid per tab) */
+      :root {
+        --terrain-panel-width: 780px;
+        --terrain-grid-gap: 14px;
+      }
+      #terrain-config-panel {
+        width: var(--terrain-panel-width);
+        height: auto;
+        max-height: 80vh;
+      }
+      #terrain-config-panel .tab-content.active {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px var(--terrain-grid-gap);
+        align-items: start;
+      }
+      /* Footer buttons (Reset Shape/Biomes/Landforms) span full width */
+      #terrain-config-panel .tab-footer {
+        grid-column: 1 / -1;
+        margin-top: 4px;
+      }
+      /* Biome Colors section is the densest — let it take two grid cells side-by-side */
+      #tab-biomes .biome-colors-section {
+        grid-column: span 2;
+        column-count: 2;
+        column-gap: var(--terrain-grid-gap);
+      }
+      #tab-biomes .biome-colors-section .slider-row {
+        break-inside: avoid;
+      }
+      
+      #terrain-config-panel.visible,
+      #env-config-panel.visible,
+      .config-popup-panel.visible {
+        display: block;
+      }
+      
+      .toggle-config-btn {
+        background: #4a9eff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 4px 8px;
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: bold;
+        transition: background 0.2s;
+      }
+      
+      .toggle-config-btn:hover {
+        background: #6fb2ff;
+      }
+      
+      #control-panel.hidden {
+        display: none;
+      }
+      
+      .control-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 6px;
+        gap: 6px;
+      }
+      
+      .key-box {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 24px;
+        height: 24px;
+        padding: 0 6px;
+        background: rgba(60, 60, 60, 0.9);
+        border: 1px solid rgba(100, 100, 100, 0.6);
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 500;
+        color: #fff;
+      }
+      
+      .key-label {
+        color: #aaa;
+        font-size: 11px;
+      }
+      
+      .control-section {
+        margin-bottom: 8px;
+        padding: 4px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      .control-section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      
+      .section-title {
+        font-size: 10px;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+      }
+      
+      /* Stats section */
+      .stats-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 12px;
+        margin-bottom: 4px;
+      }
+      
+      .stat-item {
+        display: flex;
+        gap: 4px;
+      }
+      
+      .stats-label {
+        color: #888;
+      }
+      
+      .stats-value {
+        color: #6f6;
+        font-family: monospace;
+      }
+      
+      /* Sliders */
+      .slider-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+        gap: 6px;
+        width: 100%;
+        min-height: 18px;
+      }
+      
+      .slider-label {
+        font-size: 10px;
+        color: #999;
+        font-weight: 500;
+        width: 95px;
+        flex-shrink: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .slider-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+      }
+      
+      .slider-input {
+        width: 100%;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 3px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.1);
+        outline: none;
+      }
+      
+      .slider-input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #4a9eff;
+        cursor: pointer;
+      }
+      
+      .slider-value {
+        font-family: monospace;
+        font-size: 10px;
+        color: #4a9eff;
+        width: 32px;
+        text-align: right;
+        flex-shrink: 0;
+      }
+
+      /* Tab System */
+      .panel-tabs {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 2px;
+      }
+
+      .tab-btn {
+        background: transparent;
+        border: none;
+        color: #777;
+        padding: 4px 8px;
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: color 0.2s;
+      }
+
+      .tab-btn:hover {
+        color: #bbb;
+      }
+
+      .tab-btn.active {
+        color: #4a9eff;
+        border-bottom: 2px solid #4a9eff;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* Compact Panels */
+      #terrain-config-panel, #env-config-panel {
+        background: rgba(15, 15, 20, 0.85);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 12px;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+      
+      #terrain-config-panel *, #env-config-panel * {
+        box-sizing: border-box;
+      }
+      .speed-indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      
+      .speed-bar {
+        flex: 1;
+        height: 4px;
+        background: rgba(60, 60, 60, 0.9);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      
+      .speed-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #4a9eff, #00ff88);
+        width: 0%;
+        transition: width 0.1s ease-out;
+      }
+      
+      .speed-value {
+        font-family: monospace;
+        font-size: 10px;
+        color: #6f6;
+        min-width: 60px;
+        text-align: right;
+      }
+      
+      /* Slider styles */
+      .slider-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 10px;
+      }
+      
+      .slider-label {
+        color: #aaa;
+        font-size: 11px;
+        min-width: 85px;
+      }
+      
+      .slider-container {
+        flex: 1;
+        position: relative;
+      }
+      
+      .slider-input {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 6px;
+        background: rgba(60, 60, 60, 0.9);
+        border-radius: 3px;
+        outline: none;
+        cursor: pointer;
+      }
+      
+      .slider-input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 14px;
+        height: 14px;
+        background: #4a9eff;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 4px rgba(74, 158, 255, 0.5);
+        transition: transform 0.1s, box-shadow 0.1s;
+        margin-top: -4px; /* Center thumb on track: (14px - 6px) / 2 = 4px */
+      }
+      
+      .slider-input::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+        box-shadow: 0 0 8px rgba(74, 158, 255, 0.8);
+      }
+      
+      .slider-input::-moz-range-thumb {
+        width: 14px;
+        height: 14px;
+        background: #4a9eff;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 0 4px rgba(74, 158, 255, 0.5);
+      }
+      
+      .slider-input::-webkit-slider-runnable-track {
+        height: 6px;
+        background: rgba(60, 60, 60, 0.9);
+        border-radius: 3px;
+      }
+      
+      .slider-input::-moz-range-track {
+        height: 6px;
+        background: rgba(60, 60, 60, 0.9);
+        border-radius: 3px;
+      }
+      
+      .slider-input::-webkit-slider-runnable-track {
+        background: linear-gradient(90deg, #4a9eff 0%, rgba(60, 60, 60, 0.9) 0%);
+        height: 6px;
+        border-radius: 3px;
+      }
+      
+      .slider-value {
+        font-family: monospace;
+        font-size: 11px;
+        color: #6f6;
+        min-width: 50px;
+        text-align: right;
+      }
+      
+      /* Position info */
+      .position-info {
+        font-family: monospace;
+        font-size: 10px;
+        color: #888;
+        margin-bottom: 8px;
+        word-break: break-all;
+      }
+      
+      /* Checkbox styles */
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+      
+      .styled-checkbox {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        background: rgba(60, 60, 60, 0.9);
+        border: 1px solid rgba(100, 100, 100, 0.6);
+        border-radius: 3px;
+        cursor: pointer;
+        position: relative;
+      }
+      
+      .styled-checkbox:checked {
+        background: #4a9eff;
+        border-color: #4a9eff;
+      }
+      
+      .styled-checkbox:checked::after {
+        content: '✓';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 11px;
+        font-weight: bold;
+      }
+      
+      .styled-checkbox:hover {
+        border-color: #4a9eff;
+      }
+      
+      .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #ccc;
+        font-size: 11px;
+        cursor: pointer;
+      }
+      
+      .preset-row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      
+      .preset-btn {
+        flex: 1;
+        padding: 8px 4px;
+        background: rgba(45, 45, 45, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        color: #ddd;
+        font-size: 11px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      
+      .preset-btn:hover {
+        background: rgba(60, 60, 60, 0.9);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+      
+      #btn-weather-clean:hover, #btn-weather-clean.active {
+        border-color: #4a9eff;
+        color: #4a9eff;
+      }
+      #btn-weather-clean.active {
+        background: rgba(74, 158, 255, 0.15);
+        box-shadow: 0 0 12px rgba(74, 158, 255, 0.3);
+      }
+      
+      #btn-weather-normal:hover, #btn-weather-normal.active {
+        border-color: #aaa;
+        color: #fff;
+      }
+      #btn-weather-normal.active {
+        background: rgba(170, 170, 170, 0.15);
+        box-shadow: 0 0 12px rgba(170, 170, 170, 0.2);
+      }
+      
+      #btn-weather-storm:hover, #btn-weather-storm.active {
+        border-color: #a855f7;
+        color: #d8b4fe;
+      }
+      #btn-weather-storm.active {
+        background: rgba(168, 85, 247, 0.15);
+        box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+      }
+      
+      /* Display mode buttons */
+      .display-modes {
+        display: flex;
+        gap: 6px;
+        margin-top: 8px;
+      }
+      
+      .mode-btn {
+        flex: 1;
+        padding: 5px 6px;
+        background: rgba(60, 60, 60, 0.9);
+        border: 1px solid rgba(100, 100, 100, 0.6);
+        border-radius: 4px;
+        color: #aaa;
+        font-size: 10px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        min-width: 0;
+      }
+      
+      .mode-btn:hover {
+        border-color: #4a9eff;
+        color: #fff;
+      }
+      
+      .mode-btn.active {
+        background: #4a9eff;
+        border-color: #4a9eff;
+        color: #fff;
+      }
+      
+      /* Grid button: green when active */
+      #btn-mode-grid.active {
+        background: #00cc66;
+        border-color: #00cc66;
+      }
+
+      /* Color Picker Styles */
+      .color-picker-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+      }
+      .color-input {
+        -webkit-appearance: none;
+        appearance: none;
+        border: 1px solid rgba(120, 120, 150, 0.3);
+        width: 30px;
+        height: 24px;
+        cursor: pointer;
+        background: none;
+        padding: 0;
+        border-radius: 4px;
+      }
+      .color-input::-webkit-color-swatch-wrapper {
+        padding: 0;
+      }
+      .color-input::-webkit-color-swatch {
+        border: none;
+        border-radius: 3px;
+      }
+      .slider-group-title {
+        font-size: 9px;
+        color: #666;
+        text-transform: uppercase;
+        margin-top: 12px;
+        margin-bottom: 6px;
+        border-bottom: 1px solid rgba(80, 80, 80, 0.2);
+      }
+
+      /* Auth Overlay Style */
+      #auth-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1000;
+        background: radial-gradient(circle at center, rgba(30, 30, 40, 0.4) 0%, rgba(10, 10, 15, 0.9) 100%);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.8s ease-in-out, visibility 0.8s;
+      }
+      
+      #auth-overlay.fade-out {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="webgpu-canvas"></canvas>
+    
+    <!-- Auth Overlay (blocks world until authenticated) -->
+    <div id="auth-overlay"></div>
+    
+    <!-- UI Panels are now lazy-loaded via ControlPanelUI.js -->
+    
+    <!-- Hidden elements for compatibility -->
+    <ul id="help" class="hidden"></ul>
+    <div id="status-message" class="status hidden" role="alert"></div>
+    
+    <script type="module" src="./mainPlanet.js"></script>
+  </body>
+</html>

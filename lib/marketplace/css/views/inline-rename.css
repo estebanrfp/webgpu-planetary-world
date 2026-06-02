@@ -1,0 +1,143 @@
+/* ========== Inline Rename ========== */
+    .mp-rename-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .mp-rename-display {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mp-rename-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--mp-text-white);
+    }
+
+    .mp-rename-edit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      background: var(--mp-bg-hover);
+      border: 1px solid var(--mp-border);
+      border-radius: 8px;
+      color: var(--mp-accent);
+      cursor: pointer;
+      transition: all 0.15s;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .mp-rename-edit-btn:hover {
+      background: var(--mp-accent);
+      border-color: var(--mp-accent);
+      color: var(--mp-bg-dark);
+      transform: scale(1.05);
+    }
+
+    .mp-rename-form {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mp-rename-form.active {
+      display: flex;
+    }
+
+    .mp-rename-display.hidden {
+      display: none;
+    }
+
+    .mp-rename-input-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .mp-rename-input {
+      flex: 1;
+      padding: 10px 14px;
+      background: var(--mp-bg-card);
+      border: 1px solid var(--mp-border);
+      border-radius: 8px;
+      color: var(--mp-text-white);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .mp-rename-input:focus {
+      outline: none;
+      border-color: var(--mp-accent);
+    }
+
+    .mp-rename-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .mp-rename-save-btn,
+    .mp-rename-cancel-btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mp-rename-save-btn {
+      background: var(--mp-accent);
+      border: none;
+      color: #fff;
+    }
+
+    .mp-rename-save-btn:hover {
+      background: var(--mp-accent-hover);
+    }
+
+    .mp-rename-save-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .mp-rename-cancel-btn {
+      background: transparent;
+      border: 1px solid var(--mp-border);
+      color: var(--mp-text-muted);
+    }
+
+    .mp-rename-cancel-btn:hover {
+      background: var(--mp-bg-card);
+      color: var(--mp-text);
+    }
+
+    .mp-rename-counter {
+      font-size: 11px;
+      color: var(--mp-text-muted);
+      text-align: right;
+    }
+
+    .mp-rename-counter.warning {
+      color: var(--mp-warning);
+    }
+
+    .mp-rename-counter.error {
+      color: var(--mp-danger);
+    }
+
+    .mp-rename-hint {
+      font-size: 11px;
+      color: var(--mp-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }

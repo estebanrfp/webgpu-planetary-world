@@ -1,0 +1,324 @@
+/* ========== Settings Modal ========== */
+    .mp-settings-group {
+      padding: 8px 24px 16px;
+    }
+
+    .mp-admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .mp-admin-actions .mp-btn {
+      flex: 1;
+    }
+
+    .mp-settings-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--mp-border-light);
+    }
+
+    .mp-settings-row:last-child {
+      border-bottom: none;
+      padding-bottom: 8px;
+    }
+
+    .mp-settings-label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mp-settings-label-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mp-text);
+    }
+
+    .mp-settings-label-desc {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+      line-height: 1.4;
+    }
+
+    .mp-settings-control {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    /* Toggle Switch - Minimal UI Style */
+    .mp-toggle {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 22px;
+      background-color: var(--mp-bg-input);
+      border: 1px solid var(--mp-border);
+      border-radius: 11px;
+      cursor: pointer;
+      transition: all 150ms ease;
+      flex-shrink: 0;
+    }
+
+    .mp-toggle:hover {
+      border-color: var(--mp-text-muted);
+    }
+
+    .mp-toggle.active {
+      background-color: var(--mp-accent);
+      border-color: var(--mp-accent);
+    }
+
+    .mp-toggle-knob {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background-color: #fff;
+      border-radius: 50%;
+      transition: left 150ms ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .mp-toggle.active .mp-toggle-knob {
+      left: 20px;
+    }
+
+    /* Settings Select */
+    .mp-settings-select {
+      padding: 10px 36px 10px 14px;
+      background: var(--mp-bg-input);
+      border: 1px solid var(--mp-border);
+      border-radius: 10px;
+      color: var(--mp-text);
+      font-size: 13px;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239ca3af' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      min-width: 140px;
+      transition: border-color 0.15s;
+    }
+
+    .mp-settings-select:hover,
+    .mp-settings-select:focus {
+      border-color: var(--mp-accent);
+      outline: none;
+    }
+
+    /* Settings Input */
+    .mp-settings-input {
+      padding: 10px 14px;
+      background: var(--mp-bg-input);
+      border: 1px solid var(--mp-border);
+      border-radius: 10px;
+      color: var(--mp-text);
+      font-size: 13px;
+      width: 200px;
+      transition: border-color 0.15s;
+    }
+
+    .mp-settings-input:focus {
+      outline: none;
+      border-color: var(--mp-accent);
+    }
+
+    /* Settings Button */
+    .mp-settings-btn {
+      padding: 10px 18px;
+      background: var(--mp-bg-input);
+      border: 1px solid var(--mp-border);
+      border-radius: 10px;
+      color: var(--mp-text);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mp-settings-btn:hover {
+      background: var(--mp-bg-hover);
+      border-color: var(--mp-accent);
+    }
+
+    .mp-settings-btn-primary {
+      background: var(--mp-accent);
+      border-color: var(--mp-accent);
+      color: #fff;
+    }
+
+    .mp-settings-btn-primary:hover {
+      filter: brightness(1.1);
+    }
+
+    .mp-settings-btn-danger {
+      color: var(--mp-danger);
+      border-color: rgba(239, 68, 68, 0.5);
+      background: rgba(239, 68, 68, 0.08);
+    }
+
+    .mp-settings-btn-danger:hover {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: var(--mp-danger);
+    }
+
+    .mp-settings-btn-warning {
+      color: var(--mp-warning);
+      border-color: rgba(251, 191, 36, 0.5);
+      background: rgba(251, 191, 36, 0.08);
+    }
+
+    .mp-settings-btn-warning:hover {
+      background: rgba(251, 191, 36, 0.15);
+      border-color: var(--mp-warning);
+    }
+
+    .mp-settings-btn-success {
+      color: var(--mp-success);
+      border-color: rgba(74, 222, 128, 0.5);
+      background: rgba(74, 222, 128, 0.08);
+    }
+
+    .mp-settings-btn-success:hover {
+      background: rgba(74, 222, 128, 0.15);
+      border-color: var(--mp-success);
+    }
+
+    /* Trading Status */
+    .mp-trading-status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(74, 222, 128, 0.08), rgba(74, 222, 128, 0.03));
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 12px;
+      margin: 8px 0 16px;
+    }
+
+    .mp-trading-status-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mp-trading-status-badge {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .mp-trading-status-active {
+      background: rgba(74, 222, 128, 0.2);
+      color: var(--mp-success);
+    }
+
+    .mp-trading-status-paused {
+      background: rgba(251, 191, 36, 0.2);
+      color: var(--mp-warning);
+    }
+
+    .mp-trading-status-text {
+      font-size: 14px;
+      color: var(--mp-text);
+    }
+
+    /* Accumulated Fees */
+    .mp-fees-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(139, 92, 246, 0.03));
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 12px;
+      margin: 8px 0 16px;
+    }
+
+    .mp-trading-status .mp-btn,
+    .mp-fees-box .mp-btn {
+      min-width: 120px;
+    }
+
+    .mp-fees-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mp-fees-label {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-fees-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--mp-text-white);
+    }
+
+    .mp-fees-hint {
+      font-size: 11px;
+      color: var(--mp-text-dim);
+    }
+
+    /* Wallet Info */
+    .mp-wallet-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(74, 158, 255, 0.08), rgba(139, 92, 246, 0.08));
+      border: 1px solid var(--mp-border);
+      border-radius: 12px;
+      margin: 8px 0;
+    }
+
+    .mp-wallet-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--mp-accent), var(--mp-purple-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(74, 158, 255, 0.25);
+    }
+
+    .mp-wallet-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mp-wallet-address {
+      font-size: 13px;
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-wallet-balance {
+      font-size: 13px;
+      color: var(--mp-success);
+      font-weight: 500;
+    }
+
+    .mp-wallet-actions {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }

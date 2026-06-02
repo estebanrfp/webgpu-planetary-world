@@ -1,0 +1,124 @@
+/* ========== OVGrid Color Variables ========== */
+    :root {
+      /* === Semantic Colors === */
+      --mp-accent: #4a9eff;
+      --mp-accent-rgb: 74, 158, 255;
+      --mp-success: #4ade80;
+      --mp-success-rgb: 74, 222, 128;
+      --mp-warning: #fbbf24;
+      --mp-warning-rgb: 251, 191, 36;
+      --mp-danger: #ef4444;
+      --mp-danger-rgb: 239, 68, 68;
+      --mp-purple: #a78bfa;
+      --mp-purple-rgb: 167, 139, 250;
+      --mp-purple-dark: #8b5cf6;
+      --mp-purple-dark-rgb: 139, 92, 246;
+      --mp-orange: #fb923c;
+      --mp-orange-rgb: 251, 146, 60;
+      --mp-rent: #10b981;
+      --mp-rent-rgb: 16, 185, 129;
+      --mp-pink: #f472b6;
+      --mp-pink-rgb: 244, 114, 182;
+      --mp-common: #9ca3af;
+      --mp-common-rgb: 156, 163, 175;
+
+      /* === Rarity Colors (semantic) === */
+      --mp-rarity-common: var(--mp-common);
+      --mp-rarity-common-rgb: 156, 163, 175;
+      --mp-rarity-uncommon: var(--mp-success);
+      --mp-rarity-uncommon-rgb: 74, 222, 128;
+      --mp-rarity-rare: var(--mp-accent);
+      --mp-rarity-rare-rgb: 74, 158, 255;
+      --mp-rarity-epic: var(--mp-purple);
+      --mp-rarity-epic-rgb: 167, 139, 250;
+      --mp-rarity-legendary: var(--mp-warning);
+      --mp-rarity-legendary-rgb: 251, 191, 36;
+      --mp-rarity-mythic: var(--mp-danger);
+      --mp-rarity-mythic-rgb: 239, 68, 68;
+
+      /* === Sale Type Colors (semantic) === */
+      --mp-type-sale: var(--mp-success);
+      --mp-type-sale-rgb: 74, 222, 128;
+      --mp-type-rent: var(--mp-pink);
+      --mp-type-rent-rgb: 244, 114, 182;
+      --mp-type-auction: var(--mp-warning);
+      --mp-type-auction-rgb: 251, 191, 36;
+      --mp-type-bundle: var(--mp-purple);
+      --mp-type-bundle-rgb: 167, 139, 250;
+
+      /* === Category Colors (semantic) === */
+      --mp-category-land: var(--mp-success);
+      --mp-category-land-rgb: 74, 222, 128;
+      --mp-category-wearable: var(--mp-purple);
+      --mp-category-wearable-rgb: 167, 139, 250;
+      --mp-category-vehicle: var(--mp-orange);
+      --mp-category-vehicle-rgb: 251, 146, 60;
+      --mp-category-building: var(--mp-accent);
+      --mp-category-building-rgb: 74, 158, 255;
+      --mp-category-emote: var(--mp-warning);
+      --mp-category-emote-rgb: 251, 191, 36;
+
+      /* === Modal CTA Button Colors === */
+      --mp-btn-buy: var(--mp-success);
+      --mp-btn-buy-hover: #3ecf70;
+      --mp-btn-offer: var(--mp-purple);
+      --mp-btn-offer-hover: var(--mp-purple-dark);
+      --mp-btn-rent: var(--mp-rent);
+      --mp-btn-rent-hover: #0ea572;
+      --mp-btn-bid: var(--mp-warning);
+      --mp-btn-bid-hover: #f5b014;
+      --mp-btn-auction: var(--mp-warning);
+      --mp-btn-auction-hover: #e5a500;
+      --mp-btn-sell: var(--mp-success);
+      --mp-btn-sell-hover: #3ecf70;
+      --mp-btn-gift: var(--mp-accent);
+      --mp-btn-gift-hover: #3b8df0;
+      --mp-btn-rent-out: var(--mp-pink);
+      --mp-btn-rent-out-hover: #e05a9c;
+      --mp-btn-bundle: var(--mp-purple);
+      --mp-btn-bundle-hover: #8b5cf6;
+      --mp-btn-pause: var(--mp-warning);
+      --mp-btn-pause-hover: #eab308;
+
+      /* === Land Map Parcel Colors (matched to sale type semantic colors) === */
+      --mp-land-sale: #4ade80;
+      --mp-land-auction: #fbbf24;
+      --mp-land-rent: #f472b6;
+      --mp-land-owned: #a78bfa;
+      --mp-land-empty: #1a1a24;
+      --mp-land-dimmed: rgba(50, 50, 60, 0.3);
+      --mp-land-region: #00f0ff;
+      --mp-land-state: #ffdd00;
+      --mp-land-equator: #ffffff;
+
+      /* === Badge/Label Text Color (unified) === */
+      --mp-badge-text: #abadae;
+
+      /* === Button Background Opacity === */
+      --mp-btn-bg-opacity: 0.30;
+      --mp-btn-bg-opacity-hover: 0.40;
+
+      /* === Badge Background Opacity (table/list mode) === */
+      --mp-badge-bg-opacity: 0.30;
+
+      /* === Border Radius === */
+      --mp-radius-pill: 4px;
+
+      --mp-bg-primary: #0f0f14;
+      --mp-bg-secondary: #151520;
+      --mp-bg-surface: #141415;
+      --mp-bg-modal: #191923;
+      --mp-bg-card: rgba(60, 60, 80, 0.4);
+      --mp-bg-input: rgba(30, 30, 40, 0.6);
+      --mp-bg-hover: rgba(80, 80, 100, 0.5);
+      --mp-border: rgba(100, 100, 140, 0.3);
+      --mp-border-subtle: #262627;
+      --mp-border-light: rgba(255, 255, 255, 0.08);
+      --mp-text: #e0e0e0;
+      --mp-text-muted: #888;
+      --mp-text-dim: #666;
+      --mp-text-white: #ffffff;
+
+      --mp-shadow: rgba(0, 0, 0, 0.4);
+      --mp-glow: rgba(74, 158, 255, 0.2);
+    }

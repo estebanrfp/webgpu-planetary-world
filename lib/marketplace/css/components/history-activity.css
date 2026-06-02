@@ -1,0 +1,39 @@
+/* ========== History / Activity ========== */
+    .mp-history-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--mp-border-light);
+    }
+
+    .mp-history-item:last-child { border-bottom: none; }
+
+    .mp-history-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--mp-bg-card);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .mp-history-info { flex: 1; }
+
+    .mp-history-action {
+      font-size: 14px;
+      color: var(--mp-text);
+    }
+
+    .mp-history-time {
+      font-size: 12px;
+      color: var(--mp-text-muted);
+    }
+
+    .mp-history-price {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mp-success);
+    }

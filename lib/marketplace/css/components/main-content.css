@@ -1,0 +1,98 @@
+/* ========== Main Content ========== */
+    .mp-main {
+      grid-area: main;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: rgba(15, 15, 20, 0.5);
+    }
+
+    .mp-select {
+      padding: 6px 28px 6px 10px;
+      background: var(--mp-bg-input);
+      border: 1px solid var(--mp-border);
+      border-radius: 6px;
+      color: var(--mp-text);
+      font-size: 13px;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      transition: all 0.2s;
+    }
+
+    .mp-select:focus {
+      border-color: var(--mp-accent);
+      outline: none;
+    }
+
+    .mp-sidebar .mp-select {
+      width: 100%;
+      padding: 12px 36px 12px 14px;
+      background: var(--mp-bg-input);
+      border: 1px solid var(--mp-border);
+      border-radius: 12px;
+      color: var(--mp-text);
+      font-size: 14px;
+      background-position: right 14px center;
+    }
+
+    .mp-view-toggle {
+      display: flex;
+      gap: 4px;
+      margin-left: auto;
+    }
+
+    .mp-view-btn {
+      min-width: 32px;
+      height: 32px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      color: var(--mp-text-muted);
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mp-view-btn:hover {
+      color: var(--mp-text-white);
+    }
+
+    .mp-view-btn.active {
+      color: var(--mp-accent);
+    }
+
+    /* Floating Action Button — Mint */
+    .mp-fab {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: var(--mp-success);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+      z-index: 500;
+    }
+
+    .mp-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .mp-fab:active {
+      transform: scale(0.95);
+    }
