@@ -1,4 +1,4 @@
-# OVGrid Marketplace - Architecture Overview
+# Marketplace - Architecture Overview
 
 > Technical architecture and design decisions.
 

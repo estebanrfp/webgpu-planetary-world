@@ -172,7 +172,7 @@ async function main() {
     return;
   }
 
-  // --- STORAGE MIGRATION (Nervland -> OVGrid) ---
+  // --- STORAGE MIGRATION (legacy Nervland keys -> current keys) ---
   const MIGRATIONS = {
       'terrainParams_nervland': STORAGE_KEYS.TERRAIN,
       'avatar_state_nervland': STORAGE_KEYS.AVATAR,

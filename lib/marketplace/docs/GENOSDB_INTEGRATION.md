@@ -1,10 +1,10 @@
-# GenosDB Integration — OVGrid Marketplace
+# GenosDB Integration — Marketplace
 
-> How the OVGrid Marketplace uses **GenosDB** as a real-time, P2P, reactive data
+> How the world's marketplace uses **GenosDB** as a real-time, P2P, reactive data
 > layer over a blockchain. A reference for the patterns that make it work — and a
 > worked example of GenosDB under production load.
 
-The marketplace is the most data-intensive part of OVGrid. It treats **Polygon as
+The marketplace is the most data-intensive part of the world. It treats **Polygon as
 the source of truth** for ownership and **GenosDB as the live read layer**:
 the chain is mirrored into GenosDB, every view subscribes to it reactively with
 `db.map`, and changes sync P2P to other peers. The UI never reads the chain
@@ -23,7 +23,7 @@ the marketplace.
 
 > These are the load-bearing rules of the GenosDB ↔ blockchain integration.
 > Read them first before changing marketplace data code — and as a guide to the
-> patterns OVGrid uses GenosDB for.
+> patterns the world uses GenosDB for.
 
 ### Rule 0: Blockchain-First Architecture (MOST IMPORTANT)
 

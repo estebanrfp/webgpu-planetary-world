@@ -1,8 +1,8 @@
-# OVGrid Marketplace Documentation
+# Marketplace Documentation
 
 ## Overview
 
-The OVGrid Marketplace is a fully-featured NFT trading platform built on Polygon, designed specifically for metaverse assets. It supports direct sales, rentals, bundles, bidding systems, and creator royalties.
+The world's marketplace is a fully-featured NFT trading platform built on Polygon, designed specifically for metaverse assets. It supports direct sales, rentals, bundles, bidding systems, and creator royalties.
 
 **Contract Version:** 2.2.0 (Smart Contracts) / 2.1.0 (Frontend)
 **Network:** Polygon Mainnet + Amoy (Testnet)

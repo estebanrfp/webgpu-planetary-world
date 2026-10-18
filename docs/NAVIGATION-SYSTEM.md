@@ -1,6 +1,6 @@
-# Sistema de Navegación - OVGrid Planet
+# Sistema de Navegación - WebGPU Planetary World
 
-El sistema de navegación de OVGrid utiliza un modelo de **Velocidad Dual** (Logarítmica/Lineal) diseñado para permitir transiciones fluidas desde el espacio profundo hasta la exploración a nivel de suelo.
+El sistema de navegación del mundo utiliza un modelo de **Velocidad Dual** (Logarítmica/Lineal) diseñado para permitir transiciones fluidas desde el espacio profundo hasta la exploración a nivel de suelo.
 
 ---
 

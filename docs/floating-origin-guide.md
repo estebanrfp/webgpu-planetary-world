@@ -406,13 +406,13 @@ flowchart TD
 
 ---
 
-*Documento generado para el proyecto OVGrid - WebGPU Atmospheric Scattering*
+*Documento generado para el proyecto WebGPU Planetary World - WebGPU Atmospheric Scattering*
 
 ---
 
 ## Related — Planetary rendering
 
-Part of OVGrid's planetary-rendering research set:
+Part of this project's planetary-rendering research set:
 
 - [terrain-mesh.md](terrain-mesh.md) — procedural planetary terrain (quadtree + LOD)
 - [culling-system.md](culling-system.md) — hybrid CPU + GPU culling

@@ -1,6 +1,6 @@
 # Polygon Blockchain Implementation
 
-> Blockchain contracts, addresses, scripts, and optimizations for the OVGrid Marketplace on Polygon.
+> Blockchain contracts, addresses, scripts, and optimizations for the world's marketplace on Polygon.
 
 ## Related Documents
 
@@ -93,9 +93,9 @@
   "name": "Asset Name",
   "description": "Asset description",
   "image": "https://gateway.pinata.cloud/ipfs/QmImageCID",
-  "external_url": "https://ovgrid.com",
+  "external_url": "https://example.com",
   "attributes": [
-    { "trait_type": "Collection", "value": "OVGrid" },
+    { "trait_type": "Collection", "value": "WebGPU Planetary World" },
     { "trait_type": "Category", "value": "Land" },
     { "trait_type": "Rarity", "value": "Rare" }
   ]

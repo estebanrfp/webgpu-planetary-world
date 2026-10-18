@@ -1,4 +1,4 @@
-# OVGrid Marketplace - Production Roadmap
+# Marketplace - Production Roadmap
 
 > **Last Updated:** 2026-01-24
 > **Current Version:** 1.5.0 (Polygon Mainnet + Amoy)
@@ -635,12 +635,12 @@ await db.map({
 
 ## Ideas Descartadas / Evaluadas
 
-> Features evaluados y descartados por no aportar valor significativo al caso de uso de OVGrid.
+> Features evaluados y descartados por no aportar valor significativo al caso de uso de este mundo.
 
 | Feature | Razón de descarte |
 |---------|-------------------|
-| **Collection offers** | Los assets de OVGrid (Land Plots, items) son únicos y específicos. Los usuarios quieren ubicaciones concretas, no "cualquier plot". Ya existe Global Bids para ofertar por items específicos no listados. |
-| **Lazy minting** | Solo útil para marketplaces con contenido generado por usuarios. En OVGrid, el proyecto controla el minteo de assets (Land Plots, items del juego). |
+| **Collection offers** | Los assets del mundo (Land Plots, items) son únicos y específicos. Los usuarios quieren ubicaciones concretas, no "cualquier plot". Ya existe Global Bids para ofertar por items específicos no listados. |
+| **Lazy minting** | Solo útil para marketplaces con contenido generado por usuarios. En este mundo, el proyecto controla el minteo de assets (Land Plots, items del juego). |
 | **Chainlink price conversion** | Complejidad innecesaria. El usuario puede seleccionar el token de pago que prefiera (OVG, USDC, USDT) sin necesidad de conversión automática. |
 | **Candlestick charts** | Requiere alto volumen de trading para ser útil. Con pocas ventas diarias, OHLC no aporta información (open=high=low=close). El gráfico de líneas actual es más apropiado para el caso de uso. |
 

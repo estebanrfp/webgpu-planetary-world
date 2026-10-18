@@ -1,10 +1,10 @@
-# OVGrid NFT Storage Architecture
+# NFT Storage Architecture
 
-This document describes how OVGrid stores NFT data using a hybrid approach: binary files on IPFS (Pinata) and metadata on-chain (OVGMetadata contract).
+This document describes how the world stores NFT data using a hybrid approach: binary files on IPFS (Pinata) and metadata on-chain (OVGMetadata contract).
 
 ## Overview
 
-OVGrid uses a **hybrid storage model**:
+The world uses a **hybrid storage model**:
 
 | Data Type | Storage | Editable |
 |-----------|---------|----------|
@@ -152,7 +152,7 @@ Pin name: ovgrid-nft-{tokenId}
 {
   "tokenId": "1770156769945",
   "fileType": "folder",
-  "project": "OVGrid"
+  "project": "WebGPU Planetary World"
 }
 ```
 

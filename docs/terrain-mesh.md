@@ -1,6 +1,6 @@
 # Especificación Técnica: Sistema de Terreno Procedural Planetario
 
-Este documento detalla la implementación actual del sistema de terreno en el motor **OVGrid**, optimizado para renderizado planetario a escala real con precisión milimétrica.
+Este documento detalla la implementación actual del sistema de terreno en el motor de **WebGPU Planetary World**, optimizado para renderizado planetario a escala real con precisión milimétrica.
 
 ## 1. Arquitectura del Terreno
 El sistema utiliza una estructura de **Quadtree Dinámico** para la partición espacial y la gestión del Nivel de Detalle (LOD).
@@ -46,7 +46,7 @@ El sistema de física (documentado en `gpu_physics_grid.md`) utiliza los mismos 
 
 ## Related — Planetary rendering
 
-Part of OVGrid's planetary-rendering research set:
+Part of this project's planetary-rendering research set:
 
 - [floating-origin-guide.md](floating-origin-guide.md) — Float64 CPU → camera-relative Float32 GPU (jitter-free up to LOD 22)
 - [culling-system.md](culling-system.md) — hybrid CPU + GPU culling

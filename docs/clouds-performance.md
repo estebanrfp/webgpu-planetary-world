@@ -50,7 +50,7 @@ The triple-layer cloud system represents a "Sweet Spot" in graphics programming:
 
 ## Related — Planetary rendering
 
-Part of OVGrid's planetary-rendering research set:
+Part of this project's planetary-rendering research set:
 
 - [floating-origin-guide.md](floating-origin-guide.md) — Float64 CPU → camera-relative Float32 GPU (jitter-free up to LOD 22)
 - [terrain-mesh.md](terrain-mesh.md) — procedural planetary terrain (quadtree + LOD)

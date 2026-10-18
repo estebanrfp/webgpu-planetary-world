@@ -1,8 +1,8 @@
-# GenosDB in OVGrid
+# GenosDB in WebGPU Planetary World
 
-OVGrid's entire live state runs on **[GenosDB](https://github.com/estebanrfp/gdb)** —
+The world's entire live state runs on **[GenosDB](https://github.com/estebanrfp/gdb)** —
 peer-to-peer, real-time, reactive, with **no game server**. This page is the map:
-the three distinct ways OVGrid uses GenosDB, with pointers to the code and the
+the three distinct ways the world uses GenosDB, with pointers to the code and the
 deep-dive docs.
 
 ## One database, three jobs
@@ -43,7 +43,7 @@ for inventory. Claim a parcel and it appears live, on every connected peer.
 
 Polygon is the **source of truth** for ownership; a sync layer mirrors it into
 GenosDB so the world reads **fast, offline and in real time** instead of hitting
-the chain. The UI never reads the chain directly. This is OVGrid's flagship
+the chain. The UI never reads the chain directly. This is the world's flagship
 GenosDB pattern: *blockchain = truth, GenosDB = reactive read layer + P2P sync.*
 
 - Code: [`lib/marketplace/js/core/blockchain/sync.js`](../lib/marketplace/js/core/blockchain/sync.js)

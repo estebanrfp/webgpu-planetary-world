@@ -35,7 +35,7 @@ The `terrainHeightGrid.compute.wgsl.js` shader uses the **exact same code** as t
 - **CPU Cost**: Minimal (only interpolation logic).
 
 ## Reference Files
-- [PhysicsSystem.js](file:///Users/estebanrfp/Projects/Deployments/OVGrid-Project/webgpu-precomputed-atmospheric-scattering/lib/systems/PhysicsSystem.js) - Grid management and interpolation.
-- [renderer.js](file:///Users/estebanrfp/Projects/Deployments/OVGrid-Project/webgpu-precomputed-atmospheric-scattering/lib/terrain/renderer.js) - GPU Bake dispatch.
-- [terrainHeightGrid.compute.wgsl.js](file:///Users/estebanrfp/Projects/Deployments/OVGrid-Project/webgpu-precomputed-atmospheric-scattering/lib/shaders/terrainHeightGrid.compute.wgsl.js) - The "Truth" of the terrain.
-- [physicsGridConfig.js](file:///Users/estebanrfp/Projects/Deployments/OVGrid-Project/webgpu-precomputed-atmospheric-scattering/lib/config/physicsGridConfig.js) - Centralized configuration.
+- [PhysicsSystem.js](../lib/systems/PhysicsSystem.js) - Grid management and interpolation.
+- [renderer.js](../lib/terrain/renderer.js) - GPU Bake dispatch.
+- [terrainHeightGrid.compute.wgsl.js](../lib/shaders/terrainHeightGrid.compute.wgsl.js) - The "Truth" of the terrain.
+- [physicsGridConfig.js](../lib/config/physicsGridConfig.js) - Centralized configuration.

@@ -1,4 +1,4 @@
-# Bun configuration for OVGrid
+# Bun configuration for WebGPU Planetary World
 # https://bun.sh/docs/runtime/bunfig
 
 [bundle]

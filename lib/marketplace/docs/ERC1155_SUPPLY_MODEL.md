@@ -1,6 +1,6 @@
 # ERC-1155 Supply Management Model
 
-> Supply management, inventory grouping, and batch operations for the OVGrid Marketplace.
+> Supply management, inventory grouping, and batch operations for the world's marketplace.
 
 ## Related Documents
 

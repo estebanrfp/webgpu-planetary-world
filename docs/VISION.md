@@ -1,17 +1,17 @@
-# OVGrid — Vision
+# WebGPU Planetary World — Vision
 
-## What OVGrid is
+## What the world is
 
-OVGrid is an **open social world**, not a game. There is no win condition and
-no objective loop — it is a persistent WebGPU planet that people explore,
-inhabit and share. Structured games are something OVGrid can *host* later as
-optional layers; they are not what it is.
+WebGPU Planetary World is an **open social world**, not a game. There is no win
+condition and no objective loop — it is a persistent WebGPU planet that people
+explore, inhabit and share. Structured games are something the world can *host*
+later as optional layers; they are not what it is.
 
 Reference points: VRChat, Rec Room — social spaces first, content second.
 
 ## A web-first distributed world
 
-OVGrid is a **web app** — a static WebGPU build deployed on Netlify, with P2P
+The world is a **web app** — a static WebGPU build on GitHub Pages, with P2P
 networking and identity via GenosDB. The browser is the platform: instant,
 linkable, no install, no gatekeeper. This is the project's strength, not a
 limitation — a distributed social world belongs on the open web.
@@ -22,7 +22,7 @@ limitation — a distributed social world belongs on the open web.
   ERC-1155 assets, parcels as tradable land. The world stands on its own
   without it; the economy is additive.
 
-> Note: OVGrid is web-only — it runs in the browser on WebGPU, with the full
+> Note: the world is web-only — it runs in the browser on WebGPU, with the full
 > blockchain + GenosDB stack. Native/desktop game ambitions live in separate,
 > purpose-built game projects.
 

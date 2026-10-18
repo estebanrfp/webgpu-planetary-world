@@ -1,6 +1,6 @@
 # In-World UI Panels (HTML-in-Canvas)
 
-OVGrid's configuration panels render **inside the 3D world** as billboards,
+The world's configuration panels render **inside the 3D world** as billboards,
 not as flat DOM overlays. Each panel is real HTML/CSS rasterized into a GPU
 texture through the experimental HTML-in-Canvas API, then drawn as a
 camera-facing quad anchored beside the player.

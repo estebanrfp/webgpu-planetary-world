@@ -1,4 +1,4 @@
-# OVGrid Marketplace - API Reference
+# Marketplace - API Reference
 
 > **Version:** 2.0.0
 > **Last Updated:** 2026-02-03

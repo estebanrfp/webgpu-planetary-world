@@ -1,4 +1,4 @@
-# OVGrid Marketplace - Upgrade Guide
+# Marketplace - Upgrade Guide
 
 > How to upgrade the smart contracts to new versions.
 

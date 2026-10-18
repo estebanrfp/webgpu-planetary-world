@@ -1,6 +1,6 @@
 # Configuration Reference
 
-OVGrid's entire look, feel and behaviour is **data-driven** from [`lib/config/`](../../lib/config) —
+The world's entire look, feel and behaviour is **data-driven** from [`lib/config/`](../../lib/config) —
 22 files re-exported through [`lib/config/index.js`](../../lib/config/index.js). This section
 documents **every tunable parameter**: its default, range, unit, effect and source file. Edit a
 value here and the change flows to the engine on the next build — most parameters need no code

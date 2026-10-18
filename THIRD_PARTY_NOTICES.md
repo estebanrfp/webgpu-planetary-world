@@ -1,7 +1,8 @@
 # Third-Party Notices
 
-OVGrid bundles or derives from the third-party components below. Their licenses
-apply to those components; the rest of OVGrid is under the project `LICENSE.md`.
+WebGPU Planetary World bundles or derives from the third-party components below.
+Their licenses apply to those components; the rest is under the project
+`LICENSE.md`.
 
 ## Code / binaries
 
