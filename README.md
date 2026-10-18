@@ -1,32 +1,32 @@
-# OVGrid — Open Virtual Grid
+# WebGPU Planetary World
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/estebanrfp/ovgrid)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/estebanrfp/webgpu-planetary-world)
 
-![OVGrid — Open Virtual Grid](assets/preview.png)
+![WebGPU Planetary World](assets/preview.png)
 
-**An open, serverless virtual world — and a real-world showcase of [GenosDB](https://github.com/estebanrfp/gdb).**
+**A serverless, planet-scale 3-D world in native WebGPU — and a real-world showcase of [GenosDB](https://github.com/estebanrfp/gdb).**
 
-OVGrid is a planetary 3-D world you explore as an avatar: a cube-sphere planet
-divided into a parcel **grid**, with procedural terrain, weather, vegetation,
-real-time multiplayer presence, and land/assets you can own and trade on-chain.
+A planetary 3-D world you explore as an avatar: a cube-sphere planet divided
+into a parcel **grid**, with procedural terrain, weather, vegetation, real-time
+multiplayer presence, and land/assets you can own and trade on-chain.
 
 It is built to **demonstrate what GenosDB can do** in a demanding, real product:
 a single distributed database drives the entire live state of a 3-D world —
 **peer-to-peer, real-time, offline-capable, reactive and secure — with no
 backend server.**
 
-**▶ Play it live — [world.ovgrid.com](https://world.ovgrid.com/)** · runs entirely
-in the browser, no install and no account. Needs a WebGPU browser with the
-experimental HTML-in-Canvas flag (see [Requirements](#requirements)).
+It runs entirely in the browser, with no install and no account. It needs a
+WebGPU browser with the experimental HTML-in-Canvas flag (see
+[Requirements](#requirements)).
 
 ---
 
 ## Why this exists — GenosDB in a real product
 
-Most database demos are to-do lists. OVGrid puts GenosDB under real load and
-shows the patterns that make it powerful:
+Most database demos are to-do lists. This world puts GenosDB under real load
+and shows the patterns that make it powerful:
 
-| GenosDB capability | How OVGrid uses it |
+| GenosDB capability | How the world uses it |
 |---|---|
 | **P2P real-time (GenosRTC)** | Live multiplayer presence — other players appear as animated avatars at the right position/altitude/animation, synced ~12 Hz over WebRTC. **No game server.** |
 | **Reactive reads (`db.map`)** | The 3-D world's land map *and* the marketplace subscribe to the same DB with `db.map(query, cb)`; the UI updates live as data changes. |
@@ -39,8 +39,8 @@ shows the patterns that make it powerful:
 > parcel was claimed locally or minted on-chain, the world reads it the same
 > reactive way. GenosDB is the abstraction.
 
-**Full map: [docs/GENOSDB.md](docs/GENOSDB.md)** — how OVGrid uses GenosDB across
-presence, world state and the on-chain mirror, with pointers to the code.
+**Full map: [docs/GENOSDB.md](docs/GENOSDB.md)** — how the world uses GenosDB
+across presence, world state and the on-chain mirror, with pointers to the code.
 
 ## Features
 
@@ -71,21 +71,6 @@ A boot gate detects both and shows instructions if either is missing.
 
 ## Quick start
 
-### Play online — no install
-
-Open **[world.ovgrid.com](https://world.ovgrid.com/)** in a WebGPU browser with
-the experimental HTML-in-Canvas flag enabled (see [Requirements](#requirements)).
-The boot gate checks both and shows setup instructions if either is missing.
-Exploring and P2P presence need **no account and no keys**. First-time visitors
-land on a curated island.
-
-**Shareable positions.** As you move, the address bar keeps a `?p=` deep-link to
-your exact spot and camera (position, facing, zoom and parcel). Copy the URL to
-send someone straight to that view — e.g.
-`world.ovgrid.com/?p=4.66,-5.19,-1.44,-0.94,0.11,0.5,0,70,54`.
-
-### Run locally
-
 ```bash
 pnpm install          # install dependencies
 
@@ -94,8 +79,14 @@ pnpm dev              # dev server (live-server) at http://localhost:3000
 bun run build && bun run preview   # production bundle, served at http://localhost:3000
 ```
 
-Exploring, P2P presence and reading the world need **no keys**. Minting
-land/assets needs a Pinata (IPFS) key and a wallet — see [`.env.example`](.env.example).
+Exploring, P2P presence and reading the world need **no account and no keys**.
+First-time visitors land on a curated island. Minting land/assets needs a
+Pinata (IPFS) key and a wallet — see [`.env.example`](.env.example).
+
+**Shareable positions.** As you move, the address bar keeps a `?p=` deep-link to
+your exact spot and camera (position, facing, zoom and parcel). Copy the URL to
+send someone straight to that view — e.g.
+`http://localhost:3000/?p=4.66,-5.19,-1.44,-0.94,0.11,0.5,0,70,54`.
 
 ## Controls
 
@@ -109,7 +100,7 @@ land/assets needs a Pinata (IPFS) key and a wallet — see [`.env.example`](.env
 
 ## Architecture
 
-OVGrid follows one rule, end to end:
+The world follows one rule, end to end:
 
 ```
 CPU = decides WHAT EXISTS (logic, state, precise Float64 coordinates, GenosDB)
@@ -141,21 +132,21 @@ and [docs/rain-system.md](docs/rain-system.md).
 
 > **Planetary rendering research.** The five docs linked above — floating origin,
 > procedural terrain, culling, clouds and weather — are the technical core of how
-> OVGrid renders a real-scale planet in the browser. They're grouped again under
-> *Documentation → Planetary rendering* below.
+> this world renders a real-scale planet in the browser. They're grouped again
+> under *Documentation → Planetary rendering* below.
 
 ## Documentation
 
 **AI-generated wiki** — ask questions about the codebase in natural language
 
-- [**deepwiki.com/estebanrfp/ovgrid**](https://deepwiki.com/estebanrfp/ovgrid) — DeepWiki auto-indexes this repo into a conversational wiki (architecture diagrams, file walkthroughs, "Ask" chat). Great as an entry point; the hand-written docs below are the authoritative reference.
+- [**deepwiki.com/estebanrfp/webgpu-planetary-world**](https://deepwiki.com/estebanrfp/webgpu-planetary-world) — DeepWiki auto-indexes this repo into a conversational wiki (architecture diagrams, file walkthroughs, "Ask" chat). Great as an entry point; the hand-written docs below are the authoritative reference.
 
 **GenosDB & data layer** — the reason this project exists
 
-- [docs/GENOSDB.md](docs/GENOSDB.md) — **how OVGrid uses GenosDB (overview)**
+- [docs/GENOSDB.md](docs/GENOSDB.md) — **how the world uses GenosDB (overview)**
 - [lib/network/README.md](lib/network/README.md) — **P2P presence & remote avatars (GenosDB / GenosRTC)**
 - [lib/marketplace/docs/GENOSDB_INTEGRATION.md](lib/marketplace/docs/GENOSDB_INTEGRATION.md) — **marketplace ↔ GenosDB**
-- [docs/VISION.md](docs/VISION.md) — what OVGrid is and where it's going
+- [docs/VISION.md](docs/VISION.md) — the vision behind the project
 
 **Planetary rendering** — the WebGPU research behind a real-scale world
 
