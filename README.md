@@ -15,9 +15,9 @@ a single distributed database drives the entire live state of a 3-D world —
 **peer-to-peer, real-time, offline-capable, reactive and secure — with no
 backend server.**
 
-It runs entirely in the browser, with no install and no account. It needs a
-WebGPU browser with the experimental HTML-in-Canvas flag (see
-[Requirements](#requirements)).
+**▶ [Walk around it in your browser](https://estebanrfp.github.io/webgpu-planetary-world/)** · runs
+entirely in the browser, no install and no account. Needs a WebGPU browser with
+the experimental HTML-in-Canvas flag (see [Requirements](#requirements)).
 
 ---
 
@@ -86,7 +86,7 @@ Pinata (IPFS) key and a wallet — see [`.env.example`](.env.example).
 **Shareable positions.** As you move, the address bar keeps a `?p=` deep-link to
 your exact spot and camera (position, facing, zoom and parcel). Copy the URL to
 send someone straight to that view — e.g.
-`http://localhost:3000/?p=4.66,-5.19,-1.44,-0.94,0.11,0.5,0,70,54`.
+`estebanrfp.github.io/webgpu-planetary-world/?p=4.66,-5.19,-1.44,-0.94,0.11,0.5,0,70,54`.
 
 ## Controls
 
